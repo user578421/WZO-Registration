@@ -4,8 +4,8 @@ import {InputForm} from "./InputForm.jsx";
 import PdfTemplate from "./PdfTemplate.jsx";
 import {Button, SubTitle, Title} from "./Inputs.jsx";
 import jsPDF from "jspdf";
-import {y} from  './David-normal.js'
-import {x} from './David-bold.js'
+import {y} from  './david1.js'
+import {x} from './david2.js'
 import {useAtom} from "jotai";
 import {isFormFilledAtom} from "./atoms.js";
 
