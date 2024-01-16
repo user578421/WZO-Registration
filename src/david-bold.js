@@ -5,3 +5,5 @@ this.addFileToVFS('david-bold.ttf', font);
 this.addFont('david-bold.ttf', 'david', 'bold');
 };
 jsPDF.API.events.push(['addFonts', callAddFont])
+
+export const x=1;
