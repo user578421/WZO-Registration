@@ -26,7 +26,7 @@ import {
     countryAtom, countryAtomReversed,
     familyNameAtom, familyNameAtomReversed,
     idAtom, idAtomReversed, isProcessingAtom,
-    nameAtom, nameAtomReversed, reverseHebrew,
+    nameAtom, nameAtomReversed, reverseNonHebrew,
     streetAtom,
     streetAtomReversed
 } from "./atoms.js";
@@ -83,8 +83,17 @@ const PdfTemplate = ({templateRef}) => {
     
     const placeholder = (value) => value ? <span style={styles.filled}>{value}</span> : '______________________';
     const [isProcessing] = useAtom(isProcessingAtom)
-    const localDate = new Date().toLocaleDateString();
-    const renderedDate = isProcessing? reverseHebrew(localDate) : localDate;
+    const localDate = (() => {
+        //format date as dd/MM/yyyy
+        const n = new Date();
+        const y = n.getFullYear();
+        const m = n.getMonth() + 1;
+        const d = n.getDate();
+        return `${d}/${m}/${y}`;
+    })();
+    const renderedDate = isProcessing? reverseNonHebrew(localDate) : localDate;
+    console.log({renderedDate, localDate,isProcessing})
+    const renderedGDPR = isProcessing? reverseNonHebrew("GDPR") : "GDPR";
     const f = s=>s;
     return (
         <div style={{
@@ -92,7 +101,8 @@ const PdfTemplate = ({templateRef}) => {
             maxWidth: '18cm',
             minWidth: '18cm',
             overflow: 'scroll',
-         
+            opacity: 0,
+            height: 0,
         }}>
             <div style={styles.page} ref={templateRef}>
                 <div style={styles.columnLayout}>
@@ -127,7 +137,7 @@ const PdfTemplate = ({templateRef}) => {
                         </div>
                         <div style={styles.fullWidth}>
                             <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('אני מסכים לשימושים שיעשו במידע שנאסף לעיל בהתאם לכללי ה-GDPR החלים, ככל שחלים, במדינת מגוריי הקבועה.')}</h1>
+                                <h1 style={styles.marginb0}>{f(`אני מסכים לשימושים שיעשו במידע שנאסף לעיל בהתאם לכללי ה-${renderedGDPR} החלים, ככל שחלים, במדינת מגוריי הקבועה.`)}</h1>
                             </div>
                             <div style={styles.marginb0}>
                                 <h1 style={styles.marginb0}>{f('אני מבקש להצטרף כחבר להסתדרות הציונית העולמית ואני מקבל על עצמי את "תכנית ירושלים".')}</h1>

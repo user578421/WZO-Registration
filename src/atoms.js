@@ -11,10 +11,12 @@ export const streetAtom = atom('');
 export const birthdateAtom = atom('');
 export const isProcessingAtom = atom(false);
 
-export const reverseHebrew = (str) => {
+export const reverseNonHebrew = (str) => {
     const rtlLangCharsRegex = /[\u0590-\u05FF\u0621-\u064A]/;
     if (!rtlLangCharsRegex.test(str)) {
-        return str.split('').reverse().join('');
+        //first split by "/" and then reverse each part
+        const parts = str.split('/');
+        return parts.map(part => part.split('').reverse().join('')).join('/');
     }
     return str;
 }
@@ -22,14 +24,14 @@ export const reverseHebrew = (str) => {
 export const useReverseNonHebrew = () => {
     const isProcessing = useAtomValue(isProcessingAtom);
     if (!isProcessing) return str=>str;
-    return str => reverseHebrew(str);
+    return str => reverseNonHebrew(str);
 }
     
 const atomForRenderingAtom = (get,atom) => {
     const isProcessing = get(isProcessingAtom);
     const value = get(atom);
     if (!isProcessing) return value;
-    return reverseHebrew(value);
+    return reverseNonHebrew(value);
 };
 
 export const nameAtomReversed = atom(get => atomForRenderingAtom(get,nameAtom) );
