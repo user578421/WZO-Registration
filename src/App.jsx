@@ -29,7 +29,7 @@ function App() {
                     });
                     doc.setFont("David", "normal")
                     doc.setFontSize(10);
-                    doc.setR2L(false)
+                    doc.setR2L(true)
                     setIsProcessingAtom(true)
                     setTimeout(() => {
                         doc.html(templateRef.current, {

@@ -25,10 +25,10 @@ import {
     cityAtom, cityAtomReversed,
     countryAtom, countryAtomReversed,
     familyNameAtom, familyNameAtomReversed,
-    idAtom, idAtomReversed,
-    nameAtom, nameAtomReversed,
+    idAtom, idAtomReversed, isProcessingAtom,
+    nameAtom, nameAtomReversed, reverseHebrew,
     streetAtom,
-    streetAtomReversed, useReverseHebrew
+    streetAtomReversed
 } from "./atoms.js";
 
 const PdfTemplate = ({templateRef}) => {
@@ -82,7 +82,10 @@ const PdfTemplate = ({templateRef}) => {
     };
     
     const placeholder = (value) => value ? <span style={styles.filled}>{value}</span> : '______________________';
-    const f = useReverseHebrew();
+    const [isProcessing] = useAtom(isProcessingAtom)
+    const localDate = new Date().toLocaleDateString();
+    const renderedDate = isProcessing? reverseHebrew(localDate) : localDate;
+    const f = s=>s;
     return (
         <div style={{
             margin:"auto",
@@ -133,8 +136,8 @@ const PdfTemplate = ({templateRef}) => {
                         </div>
                         <div style={styles.fullWidth}>
                             <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('תאריך')} {placeholder(new Date().toLocaleDateString())}</h1>
-                                <h1 style={styles.marginb0}>{f('חתימה')} {placeholder(name)}</h1>
+                                <h1 style={styles.marginb0}>{f('תאריך')} {placeholder(renderedDate)}</h1>
+                                <h1 style={styles.marginb0}>{f('חתימה')} {placeholder(name + " " + family)}</h1>
                             </div>
                         </div>
                     </div>

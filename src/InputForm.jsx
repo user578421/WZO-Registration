@@ -28,7 +28,7 @@ export const InputForm = () => {
             <form id="form" noValidate>
                 <TextInput label="First Name" name="name" atom={nameAtom}/>
                 <TextInput label="Last Name" name="familyName" atom={familyNameAtom}/>
-                <TextInput label="Email" name="email" type="email" atom={emailAtom}/>
+                {/*<TextInput label="Email" name="email" type="email" atom={emailAtom}/>*/}
                 <TextInput label="Id" name="id" type="text" atom={idAtom}/>
                 {/*country city street*/}
                 <DropdownInput label="Country" name="country" atom={countryAtom} options={countryOptions}/>
