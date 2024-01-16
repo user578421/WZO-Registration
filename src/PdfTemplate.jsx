@@ -20,16 +20,25 @@
 // מצורפת בזאת הוראת תשלום לשם תשלום "השקל הציוני"`
 
 import {useAtom} from "jotai";
-import {birthdateAtom, cityAtom, countryAtom, familyNameAtom, idAtom, nameAtom, streetAtom} from "./atoms.js";
+import {
+    birthdateAtom, birthdateAtomReversed,
+    cityAtom, cityAtomReversed,
+    countryAtom, countryAtomReversed,
+    familyNameAtom, familyNameAtomReversed,
+    idAtom, idAtomReversed,
+    nameAtom, nameAtomReversed,
+    streetAtom,
+    streetAtomReversed
+} from "./atoms.js";
 
 const PdfTemplate = ({templateRef}) => {
-    const [name] = useAtom(nameAtom);
-    const [family] = useAtom(familyNameAtom);
-    const [birthdate] = useAtom(birthdateAtom);
-    const [id] = useAtom(idAtom);
-    const [country] = useAtom(countryAtom);
-    const [city] = useAtom(cityAtom);
-    const [street] = useAtom(streetAtom);
+    const [name] = useAtom(nameAtomReversed);
+    const [family] = useAtom(familyNameAtomReversed);
+    const [birthdate] = useAtom(birthdateAtomReversed);
+    const [id] = useAtom(idAtomReversed);
+    const [country] = useAtom(countryAtomReversed);
+    const [city] = useAtom(cityAtomReversed);
+    const [street] = useAtom(streetAtomReversed);
     
     const styles = {
         page: {

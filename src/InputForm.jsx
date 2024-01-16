@@ -24,7 +24,7 @@ export const InputForm = () => {
     return (<div>
 
         <div className="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-            <h1 className="text-2xl font-bold mb-8">Wizo Registration Form</h1>
+            <h1 className="text-2xl font-bold mb-8">WZO Registration Form</h1>
             <form id="form" noValidate>
                 <TextInput label="First Name" name="name" atom={nameAtom}/>
                 <TextInput label="Last Name" name="familyName" atom={familyNameAtom}/>
