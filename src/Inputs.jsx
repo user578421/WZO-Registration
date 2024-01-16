@@ -71,7 +71,6 @@ export const DropdownInput = ({label, name, options,atom}) => {
     return (<div className="relative z-0 w-full mb-5">
         <select
             name={name}
-            defaultValue={value}
             onChange={e => {
                 console.log('update', e.target.value, name)
                 return setValue(e.target.value);

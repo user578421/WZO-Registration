@@ -1,4 +1,4 @@
-﻿import {atom} from "jotai";
+﻿import {atom, useAtomValue} from "jotai";
 
 export const nameAtom = atom('');
 
@@ -11,15 +11,25 @@ export const streetAtom = atom('');
 export const birthdateAtom = atom('');
 export const isProcessingAtom = atom(false);
 
+export const reverseHebrew = (str) => {
+    const rtlLangCharsRegex = /[\u0590-\u05FF\u0621-\u064A:()]/;
+    if (rtlLangCharsRegex.test(str)) {
+        return str.split('').reverse().join('');
+    }
+    return str;
+}
+
+export const useReverseHebrew = () => {
+    const isProcessing = useAtomValue(isProcessingAtom);
+    if (!isProcessing) return str=>str;
+    return str => reverseHebrew(str);
+}
+    
 const atomForRenderingAtom = (get,atom) => {
     const isProcessing = get(isProcessingAtom);
     const value = get(atom);
     if (!isProcessing) return value;
-    const rtlLangCharsRegex = /[\u0590-\u05FF\u0621-\u064A]/;
-    if (rtlLangCharsRegex.test(value)) {
-        return value.split('').reverse().join('');
-    }
-    return value;
+    return reverseHebrew(value);
 };
 
 export const nameAtomReversed = atom(get => atomForRenderingAtom(get,nameAtom) );
