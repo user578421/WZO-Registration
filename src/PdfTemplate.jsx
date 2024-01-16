@@ -130,7 +130,7 @@ const PdfTemplate = ({templateRef}) => {
                         <div style={styles.fullWidth}>
                             <div style={styles.marginb0}>
                                 <h1 style={styles.marginb0}>תאריך {new Date().toLocaleDateString()}</h1>
-                                <h1 style={styles.marginb0}>חתימה {placeholder(name)}</h1>
+                                <h1 style={styles.marginb0}>חתימה {placeholder(name + " " + family)}</h1>
                             </div>
                         </div>
                     </div>
