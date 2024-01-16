@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "David";
+    src: url("./assets/David.ttf") format("truetype");
+    font-weight: normal;
+}
