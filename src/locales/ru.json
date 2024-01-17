@@ -1,0 +1,33 @@
+﻿{
+    "button": {
+        "download-pdf": "Скачать PDF"
+    },
+    "email": {
+        "body": "Пожалуйста, прикрепите заполненную форму регистрации WZO",
+        "send-button": "Отправить письмо в офис WZO",
+        "subject": "Форма регистрации WZO -"
+    },
+    "input": {
+        "Id": "Id",
+        "birthdate": "Дата рождения",
+        "city": "Город",
+        "country": "Страна",
+        "firstName": "Имя",
+        "lastName": "Фамилия",
+        "signature": "Подпись",
+        "street": "Улица"
+    },
+    "instruction": {
+        "click": "Нажмите на кнопку, чтобы открыть письмо в офис WZO и прикрепить PDF",
+        "download-pdf": "Скачать PDF",
+        "email": "Письмо должно быть отправлено на следующие адреса:",
+        "emailAttach": "Прикрепите PDF",
+        "emailBcc": "Скрытая копия:",
+        "emailBody": "Текст:",
+        "emailSubject": "Тема:",
+        "emailTo": "Кому: ",
+        "fill-in-form": "Заполните форму ниже",
+        "remindPdf": "Не забудьте добавить PDF в качестве вложения"
+    },
+    "intructions-title": "Инструкции:"
+}

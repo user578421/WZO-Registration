@@ -1,0 +1,33 @@
+﻿{
+  "button": {
+    "download-pdf": "Download PDF"
+  },
+  "email": {
+    "body": "Please find attached the WZO Registration Form",
+    "send-button": "Compose Email to WZO Office",
+    "subject": "WZO Registration Form -"
+  },
+  "input": {
+    "Id": "Id",
+    "birthdate": "Birthdate",
+    "city": "City",
+    "country": "Country",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "signature": "Signature",
+    "street": "Street"
+  },
+  "instruction": {
+    "click": "Click on the button to open an email to the WZO Office and attach the PDF",
+    "download-pdf": "Download the PDF",
+    "email": "The email should be sent to the following addresses:",
+    "emailAttach": "Attach the PDF",
+    "emailBcc": "BCC:",
+    "emailBody": "Body:",
+    "emailSubject": "Subject:",
+    "emailTo": "To: ",
+    "fill-in-form": "Fill out the form below",
+    "remindPdf": "Dont forget to add the PDF as an attachment"
+  },
+  "intructions-title": "Instructions:"
+}

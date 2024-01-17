@@ -1,0 +1,33 @@
+﻿{
+    "button": {
+        "download-pdf": "Télécharger le PDF"
+    },
+    "email": {
+        "body": "Veuillez trouver ci-joint le formulaire d'inscription WZO",
+        "send-button": "Composer un e-mail au bureau WZO",
+        "subject": "Formulaire d'inscription WZO -"
+    },
+    "input": {
+        "Id": "Id",
+        "birthdate": "Date de naissance",
+        "city": "Ville",
+        "country": "Pays",
+        "firstName": "Prénom",
+        "lastName": "Nom de famille",
+        "signature": "Signature",
+        "street": "Rue"
+    },
+    "instruction": {
+        "click": "Cliquez sur le bouton pour ouvrir un e-mail au bureau WZO et joindre le PDF",
+        "download-pdf": "Télécharger le PDF",
+        "email": "L'e-mail doit être envoyé aux adresses suivantes:",
+        "emailAttach": "Joindre le PDF",
+        "emailBcc": "BCC:",
+        "emailBody": "Corps:",
+        "emailSubject": "Sujet:",
+        "emailTo": "À: ",
+        "fill-in-form": "Remplissez le formulaire ci-dessous",
+        "remindPdf": "N'oubliez pas d'ajouter le PDF en pièce jointe"
+    },
+    "intructions-title": "Instructions:"
+}

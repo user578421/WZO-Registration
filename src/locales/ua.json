@@ -1,0 +1,33 @@
+﻿{
+    "button": {
+        "download-pdf": "Завантажити PDF"
+    },
+    "email": {
+        "body": "Додаток до листа: Форма реєстрації WZO",
+        "send-button": "Написати лист до офісу WZO",
+        "subject": "Форма реєстрації WZO -"
+    },
+    "input": {
+        "Id": "Id",
+        "birthdate": "Дата народження",
+        "city": "Місто",
+        "country": "Країна",
+        "firstName": "Ім'я",
+        "lastName": "Прізвище",
+        "signature": "Підпис",
+        "street": "Вулиця"
+    },
+    "instruction": {
+        "click": "Натисніть на кнопку, щоб відкрити лист до офісу WZO з доданим PDF",
+        "download-pdf": "Завантажити PDF",
+        "email": "Лист повинен бути відправлений на наступні адреси:",
+        "emailAttach": "Додати PDF",
+        "emailBcc": "BCC:",
+        "emailBody": "Тіло:",
+        "emailSubject": "Тема:",
+        "emailTo": "До: ",
+        "fill-in-form": "Заповніть форму нижче",
+        "remindPdf": "Не забудьте додати PDF як вкладення"
+    },
+    "intructions-title": "Інструкції:"
+}

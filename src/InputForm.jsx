@@ -14,6 +14,7 @@ import {
 import PdfTemplate from "./PdfTemplate.jsx";
 import {useRef} from "react";
 import {DateInput, DropdownInput, SignatureInput, TextInput} from "./Inputs.jsx";
+import {useTranslation} from "react-i18next";
 
 export const countryOptions = [
     {value: "France", label: "France"},
@@ -39,21 +40,22 @@ export const countryOptions = [
 ]
 
 export const InputForm = () => {
+    const {t} = useTranslation();
     return (<div>
 
         <div className="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
             <h1 className="text-2xl font-bold mb-8">WZO Registration Form</h1>
             <form id="form" noValidate>
-                <TextInput label="First Name" name="name" atom={nameAtom}/>
-                <TextInput label="Last Name" name="familyName" atom={familyNameAtom}/>
+                <TextInput label={t("input.firstName")} name="name" atom={nameAtom}/>
+                <TextInput label={t("input.lastName")} name="familyName" atom={familyNameAtom}/>
                 {/*<TextInput label="Email" name="email" type="email" atom={emailAtom}/>*/}
-                <TextInput label="Id" name="id" type="text" atom={idAtom}/>
+                <TextInput label={t("input.Id")} name="id" type="text" atom={idAtom}/>
                 {/*country city street*/}
-                <DropdownInput label="Country" name="country" atom={countryAtom} options={countryOptions}/>
-                <TextInput label="City" name="city" type="text" atom={cityAtom}/>
-                <TextInput label="Street" name="street" type="text" atom={streetAtom}/>
-                <DateInput label="Birthdate" name="birthdate" atom={birthdateAtom}/>
-                <SignatureInput label="Signature" name="signature"/>
+                <DropdownInput label={t("input.country")} name="country" atom={countryAtom} options={countryOptions}/>
+                <TextInput label={t("input.city")} name="city" type="text" atom={cityAtom}/>
+                <TextInput label={t("input.street")} name="street" type="text" atom={streetAtom}/>
+                <DateInput label={t("input.birthdate")} name="birthdate" atom={birthdateAtom}/>
+                <SignatureInput label={t("input.signature")} name="signature"/>
             </form>
         </div>
     </div>);
