@@ -46,7 +46,7 @@ const PdfTemplate = ({templateRef}) => {
             overflow: 'hidden',
             marginLeft: '5rem',
             marginRight: '5rem',
-            'page-break-after': 'always',
+            pageBreakAfter: 'always',
             fontFamily: 'David',
             direction: 'rtl',
             textAlign: 'right',
