@@ -41,7 +41,7 @@ const PdfTemplate = ({templateRef}) => {
     const [street] = useAtom(streetAtomReversed);
     const [signature] = useAtom(signatureAtom);
     console.log({name, family, birthdate, id, country, city, street, signature})
-    
+
     const styles = {
         page: {
             overflow: 'hidden',
@@ -76,13 +76,13 @@ const PdfTemplate = ({templateRef}) => {
         marginb0: {
             marginBottom: 0,
         },
-        
+
         filled: {
             fontWeight: 'bold',
             textDecoration: 'underline',
         },
     };
-    
+
     const placeholder = (value) => value ? <span>{value}</span> : '______________________';
     const [isProcessing] = useAtom(isProcessingAtom)
     const localDate = (() => {
@@ -93,13 +93,13 @@ const PdfTemplate = ({templateRef}) => {
         const d = n.getDate();
         return `${d}/${m}/${y}`;
     })();
-    const renderedDate = isProcessing? reverseNonHebrew(localDate) : localDate;
-    console.log({renderedDate, localDate,isProcessing})
-    const renderedGDPR = isProcessing? reverseNonHebrew("GDPR") : "GDPR";
-    const f = s=>s;
+    const renderedDate = isProcessing ? reverseNonHebrew(localDate) : localDate;
+    console.log({renderedDate, localDate, isProcessing})
+    const renderedGDPR = isProcessing ? reverseNonHebrew("GDPR") : "GDPR";
+    const f = s => s;
     return (
         <div style={{
-            margin:"auto",
+            margin: "auto",
             maxWidth: '18cm',
             minWidth: '18cm',
             overflow: 'scroll',
@@ -127,13 +127,21 @@ const PdfTemplate = ({templateRef}) => {
                                 <h1 className={""}>{f('להלן פרטיי האישיים בהתאם לתקנה 1א(ג) לתקנות החוקה:')}</h1>
                             </div>
                             <div className={""}>
-                                <h1 className={""}><span className={"font-bold"}>{f('שם פרטי')}</span> {placeholder(name)}</h1>
-                                <h1 className={""}><span className={"font-bold"}>{f('שם משפחה')}</span> {placeholder(family)}</h1>                                 
-                                <h1 className={""}><span className={"font-bold"}>{f('תאריך לידה')}</span> {placeholder(birthdate)}</h1>
-                                <h1 className={""}><span className={"font-bold"}>{f('מספר זיהות')}</span> {placeholder(id)}</h1>
-                                <h1 className={""}><span className={"font-bold"}>{f('ארץ מגוריי הקבועה היא')}</span> {placeholder(country)}</h1>
-                                <h1 className={""}><span className={"font-bold"}>{f('בעיר')}</span> {placeholder(city)}</h1>
-                                <h1 className={""}><span className={"font-bold"}>{f('ברחוב')}</span> {placeholder(street)}</h1>
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('שם פרטי')}</span> {placeholder(name)}</h1>
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('שם משפחה')}</span> {placeholder(family)}</h1>
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('תאריך לידה')}</span> {placeholder(birthdate)}</h1>
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('מספר זיהות')}</span> {placeholder(id)}</h1>
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('ארץ מגוריי הקבועה היא')}</span> {placeholder(country)}
+                                </h1>
+                                <h1 className={""}><span className={"font-bold"}>{f('בעיר')}</span> {placeholder(city)}
+                                </h1>
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('ברחוב')}</span> {placeholder(street)}</h1>
                             </div>
 
                         </div>
@@ -144,15 +152,19 @@ const PdfTemplate = ({templateRef}) => {
                             <div className={"mb-5"}>
                                 <h1 className={""}>{f('אני מבקש להצטרף כחבר להסתדרות הציונית העולמית ואני מקבל על עצמי את "תכנית ירושלים".')}</h1>
                             </div>
-
+                            <div className={"mb-5"}>
+                                <h1 className={""}>{f('אני מתחייב באופן בלתי חוזר ונותן בזאת הוראת תשלום לשלם את "השקל הציוני" בשיעורים ובדרכים שתורה לי ההסתדרות הציונית העולמית')}</h1>
+                            </div>
                         </div>
                         <div style={styles.fullWidth}>
                             <div className={"flex justify-between"}>
-                                <h1 className={""}><span className={"font-bold"}>{f('תאריך')}</span> {placeholder(renderedDate)}
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{f('תאריך')}</span> {placeholder(renderedDate)}
                                 </h1>
                             </div>
                             <h1 className={""}><span className={"font-bold"}>{f('חתימה')}</span></h1>
-                            {placeholder(signature ? <img src={signature} style={{width: '400px', padding:5}} alt={`${name} ${family}`}/> : null)}
+                            {placeholder(signature ? <img src={signature} style={{width: '400px', padding: 5}}
+                                                          alt={`${name} ${family}`}/> : null)}
                         </div>
                     </div>
                 </div>
