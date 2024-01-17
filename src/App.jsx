@@ -8,8 +8,9 @@ import {y} from './david1.js'
 import {x} from './david2.js'
 import {useAtom} from "jotai";
 import {isFormFilledAtom, isProcessingAtom} from "./atoms.js";
+import {ToastContainer} from "react-toastify";
 
-
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
     const templateRef = useRef();
     const [isFormFilled] = useAtom(isFormFilledAtom);
@@ -47,8 +48,8 @@ function App() {
                 disabled={!isFormFilled}
                 onClick={() => {
                     //dont store the email addresses in the code so that they are not exposed in the public source code
-                    const toAddresses = ["YaakovH!wzo.org.il", "Yaakova!wzo.org.il", "GustiY!wzo.org.il", "ReubenSh!wzo.org.il"].join(";").replace(/!/g, "@");
-                    const bccAddresses = "Wzoelections!gmail.com".replace(/!/g, "@"); 
+                    const toAddresses = ["yaakovH!wzo.org.il", "yaakova!wzo.org.il", "gustiY!wzo.org.il", "reubensh!wzo.org.il"].join(",").replace(/!/g, "@");
+                    const bccAddresses = "wzoelections!gmail.com".replace(/!/g, "@"); 
                     const subject = "WZO Registration Form";
                     const body = "Please find attached the WZO Registration Form";
                     const href = `mailto:${toAddresses}?subject=${subject}&body=${body}&bcc=${bccAddresses}`;
@@ -61,7 +62,7 @@ function App() {
                 Compose Email to WZO Office
             </Button>
             <SubTitle>Dont forget to add the PDF as an attachment</SubTitle>
-
+            <ToastContainer />
         </div>
     )
 }

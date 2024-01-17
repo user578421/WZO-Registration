@@ -26,7 +26,7 @@ import {
     countryAtom, countryAtomReversed,
     familyNameAtom, familyNameAtomReversed,
     idAtom, idAtomReversed, isProcessingAtom,
-    nameAtom, nameAtomReversed, reverseNonHebrew,
+    nameAtom, nameAtomReversed, reverseNonHebrew, signatureAtom,
     streetAtom,
     streetAtomReversed
 } from "./atoms.js";
@@ -39,6 +39,7 @@ const PdfTemplate = ({templateRef}) => {
     const [country] = useAtom(countryAtomReversed);
     const [city] = useAtom(cityAtomReversed);
     const [street] = useAtom(streetAtomReversed);
+    const [signature] = useAtom(signatureAtom);
     
     const styles = {
         page: {
@@ -81,7 +82,7 @@ const PdfTemplate = ({templateRef}) => {
         },
     };
     
-    const placeholder = (value) => value ? <span style={styles.filled}>{value}</span> : '______________________';
+    const placeholder = (value) => value ? <span>{value}</span> : '______________________';
     const [isProcessing] = useAtom(isProcessingAtom)
     const localDate = (() => {
         //format date as dd/MM/yyyy
@@ -105,50 +106,52 @@ const PdfTemplate = ({templateRef}) => {
             // height: 0,
         }}>
             <div style={styles.page} ref={templateRef}>
-                <div style={styles.columnLayout}>
-                    <div style={styles.column}>
-                        <div style={styles.fullWidth}>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('לכבוד:')}</h1>
-                                <h1 style={styles.marginb0}>{f('ההסתדרות הציונית העולמית')}</h1>
-                                <h1 style={styles.marginb0}>{f('ירושלים')}</h1>
+                <div style={styles.columnLayout} className={"text-sm"}>
+                    <div style={styles.column} className={"leading-5"}>
+                        <div style={styles.fullWidth} className={"mb-5"}>
+                            <div className={"mb-5 "}>
+                                <h1 className={"font-bold"}>{f('לכבוד:')}</h1>
+                                <h1 className={""}>{f('ההסתדרות הציונית העולמית')}</h1>
+                                <h1 className={""}>{f('ירושלים')}</h1>
                             </div>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('בקשה להצטרף להסתדרות הציונית העולמית')}</h1>
+                            <div className={"underline text-center font-bold mb-5"}>
+                                <h1 className={""}>{f('בקשה להצטרף להסתדרות הציונית העולמית')}</h1>
                             </div>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('בהתאם לסעיף 5 לחוקת ההסתדרות הציונית העולמית, ובהתאם לתקנה 1א לתקנות חוקת ההסתדרות הציונית העולמית, אני מבקש בזאת להצטרף כחבר בהסתדרות הציונית העולמית.')}</h1>
+                            <div className={""}>
+                                <h1 className={""}>{f('בהתאם לסעיף 5 לחוקת ההסתדרות הציונית העולמית, ובהתאם לתקנה 1א לתקנות חוקת ההסתדרות הציונית העולמית, אני מבקש בזאת להצטרף כחבר בהסתדרות הציונית העולמית.')}</h1>
                             </div>
                         </div>
-                        <div style={styles.fullWidth}>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('להלן פרטיי האישיים בהתאם לתקנה 1א(ג) לתקנות החוקה:')}</h1>
+                        <div style={styles.fullWidth} className={"mb-5"}>
+                            <div className={"mb-5"}>
+                                <h1 className={""}>{f('להלן פרטיי האישיים בהתאם לתקנה 1א(ג) לתקנות החוקה:')}</h1>
                             </div>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('שם פרטי')} {placeholder(name)}</h1>
-                                <h1 style={styles.marginb0}>{f('שם משפחה')} {placeholder(family)}</h1>                                 
-                                <h1 style={styles.marginb0}>{f('תאריך לידה')} {placeholder(birthdate)}</h1>
-                                <h1 style={styles.marginb0}>{f('מספר זיהות')} {placeholder(id)}</h1>
-                                <h1 style={styles.marginb0}>{f('ארץ מגוריי הקבועה היא')} {placeholder(country)}</h1>
-                                <h1 style={styles.marginb0}>{f('בעיר')} {placeholder(city)}</h1>
-                                <h1 style={styles.marginb0}>{f('ברחוב')} {placeholder(street)}</h1>
+                            <div className={""}>
+                                <h1 className={""}><span className={"font-bold"}>{f('שם פרטי')}</span> {placeholder(name)}</h1>
+                                <h1 className={""}><span className={"font-bold"}>{f('שם משפחה')}</span> {placeholder(family)}</h1>                                 
+                                <h1 className={""}><span className={"font-bold"}>{f('תאריך לידה')}</span> {placeholder(birthdate)}</h1>
+                                <h1 className={""}><span className={"font-bold"}>{f('מספר זיהות')}</span> {placeholder(id)}</h1>
+                                <h1 className={""}><span className={"font-bold"}>{f('ארץ מגוריי הקבועה היא')}</span> {placeholder(country)}</h1>
+                                <h1 className={""}><span className={"font-bold"}>{f('בעיר')}</span> {placeholder(city)}</h1>
+                                <h1 className={""}><span className={"font-bold"}>{f('ברחוב')}</span> {placeholder(street)}</h1>
                             </div>
 
                         </div>
                         <div style={styles.fullWidth}>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f(`אני מסכים לשימושים שיעשו במידע שנאסף לעיל בהתאם לכללי ה-${renderedGDPR} החלים, ככל שחלים, במדינת מגוריי הקבועה.`)}</h1>
+                            <div className={"mb-5"}>
+                                <h1 className={""}>{f(`אני מסכים לשימושים שיעשו במידע שנאסף לעיל בהתאם לכללי ה-${renderedGDPR} החלים, ככל שחלים, במדינת מגוריי הקבועה.`)}</h1>
                             </div>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('אני מבקש להצטרף כחבר להסתדרות הציונית העולמית ואני מקבל על עצמי את "תכנית ירושלים".')}</h1>
+                            <div className={"mb-5"}>
+                                <h1 className={""}>{f('אני מבקש להצטרף כחבר להסתדרות הציונית העולמית ואני מקבל על עצמי את "תכנית ירושלים".')}</h1>
                             </div>
 
                         </div>
                         <div style={styles.fullWidth}>
-                            <div style={styles.marginb0}>
-                                <h1 style={styles.marginb0}>{f('תאריך')} {placeholder(renderedDate)}</h1>
-                                <h1 style={styles.marginb0}>{f('חתימה')} {placeholder(name + " " + family)}</h1>
+                            <div className={"flex justify-between"}>
+                                <h1 className={""}><span className={"font-bold"}>{f('תאריך')}</span> {placeholder(renderedDate)}
+                                </h1>
                             </div>
+                            <h1 className={""}><span className={"font-bold"}>{f('חתימה')}</span></h1>
+                            {placeholder(signature ? <img src={signature} style={{width: '400px', padding:5}} alt={`${name} ${family}`}/> : null)}
                         </div>
                     </div>
                 </div>

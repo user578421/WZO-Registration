@@ -10,7 +10,8 @@ export const cityAtom = atom('');
 export const streetAtom = atom('');
 export const birthdateAtom = atom('');
 export const isProcessingAtom = atom(false);
-
+export const signaturePadAtom = atom(null);
+export  const signatureAtom = atom(null);
 export const reverseNonHebrew = (str) => {
     const rtlLangCharsRegex = /[\u0590-\u05FF\u0621-\u064A]/;
     if (!rtlLangCharsRegex.test(str)) {
@@ -52,6 +53,7 @@ export const isFormFilledAtom = atom(get => {
     const city = get(cityAtom);
     const street = get(streetAtom);
     const birthdate = get(birthdateAtom);
+    const signature = get(signatureAtom);
     console.log({name, familyName,  id, country, city, street, birthdate})
-    return !!(name && familyName &&  id && country && city && street && birthdate);
+    return !!(name && familyName &&  id && country && city && street && birthdate && signature);
 });

@@ -1,4 +1,8 @@
 ﻿import {useAtom} from "jotai";
+import {useEffect, useRef} from "react";
+import SignaturePad from "signature_pad";
+import {signatureAtom, signaturePadAtom} from "./atoms.js";
+import {toast} from "react-toastify";
 
 export const TextInput = ({label, name, type = "text", atom}) => {
     const [value, setValue] = useAtom(atom)
@@ -66,7 +70,7 @@ export const DateInput = ({label, name, atom}) => {
 };
 
 
-export const DropdownInput = ({label, name, options,atom}) => {
+export const DropdownInput = ({label, name, options, atom}) => {
     const [value, setValue] = useAtom(atom)
     return (<div className="relative z-0 w-full mb-5">
         <select
@@ -77,7 +81,7 @@ export const DropdownInput = ({label, name, options,atom}) => {
             }}
             className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
         >
-            <option value="" selected disabled hidden></option>
+            <option value="" selected></option>
             {options.map((option, index) => (
                 <option key={index} value={option.value}>{option.label}</option>))}
         </select>
@@ -98,6 +102,47 @@ export const Button = ({children, disabled, ...rest}) => {
         {children}
     </button>);
 };
+
+export const SignatureInput = ({label, name}) => {
+    const [value, setValue] = useAtom(signatureAtom)
+    const [signaturePad, setSignaturePad] = useAtom(signaturePadAtom)
+
+    const canvasRef = useRef(null)
+    useEffect(() => {
+        const canvas = canvasRef.current
+        const signaturePad = new SignaturePad(canvas, {
+            onEnd: () => {
+                setValue(signaturePad.toDataURL())
+            },
+            backgroundColor: 'white',
+            penColor: 'black',
+            minWidth: 1,
+            maxWidth: 1,
+        })
+        setSignaturePad(signaturePad)
+    }, [canvasRef.current]);
+
+    const clear = () => {
+        signaturePad.clear()
+        setValue(null)
+    }
+    const save = () => {
+        if (signaturePad.isEmpty()) {
+            toast.error('Please provide a signature first')
+        } else {
+            setValue(signaturePad.toDataURL())
+        }
+    }
+    return (<div className="relative z-0 w-full mb-5">
+        <canvas ref={canvasRef} width="300" height="100" className="border-2 border-gray-300"/>
+        <div className="flex space-x-4">
+            <Button onClick={clear}>Clear</Button>
+            <Button onClick={save}>Save</Button>
+        </div>
+        <label htmlFor={name} className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">{label}</label>
+        <span className="text-sm text-red-600 hidden" id="error">Signature is required</span>
+    </div>);
+}
 
 
 export const Title = ({children}) => (<h1 className="text-2xl font-bold mb-2 mt-2 w-1/10">{children}</h1>);

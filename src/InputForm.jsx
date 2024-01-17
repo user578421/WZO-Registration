@@ -13,11 +13,29 @@ import {
 } from "./atoms.js";
 import PdfTemplate from "./PdfTemplate.jsx";
 import {useRef} from "react";
-import {DateInput, DropdownInput, TextInput} from "./Inputs.jsx";
-
+import {DateInput, DropdownInput, SignatureInput, TextInput} from "./Inputs.jsx";
 
 export const countryOptions = [
-    {label: "ישראל", value: "ישראל"},
+    {value: "France", label: "France"},
+    {value: "Uruguay", label: "Uruguay"},
+    {value: "Argentina", label: "Argentina"},
+    {value: "Venezuela", label: "Venezuela"},
+    {value: "Mexico", label: "Mexico"},
+    {value: "Peru", label: "Peru"},
+    {value: "Chile", label: "Chile"},
+    {value: "Colombia", label: "Colombia"},
+    {value: "Belgium", label: "Belgium"},
+    {value: "Austria", label: "Austria"},
+    {value: "Germany", label: "Germany"},
+    {value: "Denmark", label: "Denmark"},
+    {value: "Ukraine", label: "Ukraine"},
+    {value: "Hungary", label: "Hungary"},
+    {value: "Russia", label: "Russia"},
+    {value: "South Africa", label: "South Africa"},
+    {value: "Italy", label: "Italy"},
+    {value: "Brazil", label: "Brazil"},
+    {value: "Australia", label: "Australia"},
+    {value: "Costa Rica", label: "Costa Rica"},
 ]
 
 export const InputForm = () => {
@@ -35,6 +53,7 @@ export const InputForm = () => {
                 <TextInput label="City" name="city" type="text" atom={cityAtom}/>
                 <TextInput label="Street" name="street" type="text" atom={streetAtom}/>
                 <DateInput label="Birthdate" name="birthdate" atom={birthdateAtom}/>
+                <SignatureInput label="Signature" name="signature"/>
             </form>
         </div>
     </div>);
