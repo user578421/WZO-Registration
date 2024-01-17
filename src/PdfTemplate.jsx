@@ -40,7 +40,6 @@ const PdfTemplate = ({templateRef}) => {
     const [city] = useAtom(cityAtomReversed);
     const [street] = useAtom(streetAtomReversed);
     const [signature] = useAtom(signatureAtom);
-    console.log({name, family, birthdate, id, country, city, street, signature})
 
     const styles = {
         page: {
