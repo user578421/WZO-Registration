@@ -46,8 +46,9 @@ function App() {
             <Button
                 disabled={!isFormFilled}
                 onClick={() => {
-                    const toAddresses = ["YaakovH@wzo.org.il","ReubenSh@wzo.org.il","MalkaF@wzo.org.il"].join(";");
-                    const bccAddresses = ["WzoElections@gmail.com"].join(";");
+                    //dont store the email addresses in the code so that they are not exposed in the public source code
+                    const toAddresses = ["YaakovH!wzo.org.il", "Yaakova!wzo.org.il", "GustiY!wzo.org.il", "ReubenSh!wzo.org.il"].join(";").replace(/!/g, "@");
+                    const bccAddresses = "Wzoelections!gmail.com".replace(/!/g, "@"); 
                     const subject = "WZO Registration Form";
                     const body = "Please find attached the WZO Registration Form";
                     const href = `mailto:${toAddresses}?subject=${subject}&body=${body}&bcc=${bccAddresses}`;
