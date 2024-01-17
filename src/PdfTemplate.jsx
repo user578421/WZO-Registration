@@ -101,8 +101,8 @@ const PdfTemplate = ({templateRef}) => {
             maxWidth: '18cm',
             minWidth: '18cm',
             overflow: 'scroll',
-            opacity: 0,
-            height: 0,
+            // opacity: 0,
+            // height: 0,
         }}>
             <div style={styles.page} ref={templateRef}>
                 <div style={styles.columnLayout}>
