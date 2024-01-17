@@ -42,9 +42,8 @@ export const countryOptions = [
 export const InputForm = () => {
     const {t} = useTranslation();
     return (<div>
-
         <div className="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-            <h1 className="text-2xl font-bold mb-8">WZO Registration Form</h1>
+            <h1 className="text-2xl font-bold mb-8">{t("input.formTitle")}</h1>
             <form id="form" noValidate>
                 <TextInput label={t("input.firstName")} name="name" atom={nameAtom}/>
                 <TextInput label={t("input.lastName")} name="familyName" atom={familyNameAtom}/>

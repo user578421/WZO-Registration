@@ -1,33 +1,54 @@
 ﻿{
-    "button": {
-        "download-pdf": "Télécharger le PDF"
-    },
-    "email": {
-        "body": "Veuillez trouver ci-joint le formulaire d'inscription WZO",
-        "send-button": "Composer un e-mail au bureau WZO",
-        "subject": "Formulaire d'inscription WZO -"
-    },
-    "input": {
-        "Id": "Id",
-        "birthdate": "Date de naissance",
-        "city": "Ville",
-        "country": "Pays",
-        "firstName": "Prénom",
-        "lastName": "Nom de famille",
-        "signature": "Signature",
-        "street": "Rue"
-    },
-    "instruction": {
-        "click": "Cliquez sur le bouton pour ouvrir un e-mail au bureau WZO et joindre le PDF",
-        "download-pdf": "Télécharger le PDF",
-        "email": "L'e-mail doit être envoyé aux adresses suivantes:",
-        "emailAttach": "Joindre le PDF",
-        "emailBcc": "BCC:",
-        "emailBody": "Corps:",
-        "emailSubject": "Sujet:",
-        "emailTo": "À: ",
-        "fill-in-form": "Remplissez le formulaire ci-dessous",
-        "remindPdf": "N'oubliez pas d'ajouter le PDF en pièce jointe"
-    },
-    "intructions-title": "Instructions:"
+  "button": {
+    "download-pdf": "Télécharger le PDF"
+  },
+  "email": {
+    "body": "Veuillez trouver ci-joint le formulaire d'inscription WZO",
+    "send-button": "Composer un e-mail au bureau WZO",
+    "subject": "Formulaire d'inscription WZO -"
+  },
+  "input": {
+    "Id": "Id",
+    "birthdate": "Date de naissance",
+    "city": "Ville",
+    "country": "Pays",
+    "firstName": "Prénom",
+    "formTitle": "",
+    "lastName": "Nom de famille",
+    "signature": "Signature",
+    "street": "Rue"
+  },
+  "instruction": {
+    "click": "Cliquez sur le bouton pour ouvrir un e-mail au bureau WZO et joindre le PDF",
+    "download-pdf": "Télécharger le PDF",
+    "email": "L'e-mail doit être envoyé aux adresses suivantes:",
+    "emailAttach": "Joindre le PDF",
+    "emailBcc": "BCC:",
+    "emailBody": "Corps:",
+    "emailSubject": "Sujet:",
+    "emailTo": "À: ",
+    "fill-in-form": "Remplissez le formulaire ci-dessous",
+    "remindPdf": "N'oubliez pas d'ajouter le PDF en pièce jointe"
+  },
+  "intructions-title": "Instructions:",
+  "pdf": {
+    "birthdate": "Date de naissance",
+    "city": "Ville",
+    "commitment": "Ci-joint un ordre de règlement du « Shekel Sioniste ».",
+    "country": "Pays de résidence",
+    "date": "Date",
+    "details-intro": "Voici mes coordonnées selon les dispositions de l'article 1a(c) des Statuts :",
+    "firstname": "Prénom",
+    "gdpr": "J’accepte que mes coordonnées ci-dessus soient utilisées selon les règles GDPR qui s’appliquent le cas échéant dans le pays de ma résidence permanente.",
+    "histadrut": "Histadrut Sioniste Mondiale",
+    "id": "Numéro d'identité",
+    "jerusalem": "Jérusalem",
+    "join": "Je souhaite devenir membre de la Histadrut Sioniste Mondiale et j’accepte le « Programme Jérusalem ».",
+    "lastname": "Nom de famille",
+    "lechavod": "À l'attention de:",
+    "request": "En vertu de l'article 5 des Statuts de la Histadrut Sioniste Mondiale et de l'article 1a des Statuts de la Histadrut Sioniste Mondiale, je souhaite par la présente devenir membre de la Histadrut Sioniste Mondiale.",
+    "signed": "Signature",
+    "street": "Rue",
+    "subject": "Demande pour devenir membre de la Histadrut Sioniste Mondiale"
+  }
 }

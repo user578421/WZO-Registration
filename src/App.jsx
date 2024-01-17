@@ -19,6 +19,7 @@ const locales = {
     fr: "Français",
     ru: "русский",
     ua: "український",
+    he: "עברית"
 }
 
 function App() {
@@ -36,14 +37,15 @@ function App() {
     const flagIcon = (lang) => {
         return <span className="inline-flex items-center justify-center">
                                 <img
-                                    src={`https://flagcdn.com/16x12/${lang === "en" ? "us" : lang}.png`}
+                                    src={`https://flagcdn.com/16x12/${lang === "en" ? "us" : lang === "he" ? "il": lang}.png`}
                                     alt={locales[lang]}/>
                             </span>
     }
     return (
-        <div className="min-h-screen bg-gray-100 p-0 sm:p-12 flex justify-center flex-col items-center">
-            <div className="flex justify-end w-full">
-                <div className="relative inline-block text-left">
+        <div className="min-h-screen bg-gray-100 p-0 sm:p-12 flex justify-center flex-col items-center"
+                dir={i18n.dir()}>
+            <div className={`flex justify-${i18n.dir() === "ltr" ? "end" : "start"} w-full`}>
+                <div className={`relative inline-block text-left`}>
                     <div>
                         <button type="button"
                                 className={`inline-flex flex-row gap-2 justify-center w-full rounded-md 
@@ -64,7 +66,7 @@ function App() {
                     {/* Dropdown menu, show/hide based on menu state. */}
                     {langDropdownOpen && (
                         <div
-                            className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            className={`origin-top-right absolute mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 right-0`}>
                             <div className="py-1" role="menu" aria-orientation="vertical"
                                  aria-labelledby="options-menu">
                                 <a href="#" onClick={() => {
@@ -101,6 +103,14 @@ function App() {
                                    role="menuitem">
                                     {flagIcon("ua")}
                                     український</a>
+                                <a href="#" onClick={() => {
+                                    i18n.changeLanguage("he");
+                                    setLangDropdownOpen(false)
+                                }}
+                                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                      role="menuitem">
+                                        {flagIcon("he")}
+                                        עברית</a>
                             </div>
                         </div>
                     )}

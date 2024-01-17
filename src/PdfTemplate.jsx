@@ -30,6 +30,7 @@ import {
     streetAtom,
     streetAtomReversed
 } from "./atoms.js";
+import {useTranslation} from "react-i18next";
 
 const PdfTemplate = ({templateRef}) => {
     const [name] = useAtom(nameAtomReversed);
@@ -40,6 +41,7 @@ const PdfTemplate = ({templateRef}) => {
     const [city] = useAtom(cityAtomReversed);
     const [street] = useAtom(streetAtomReversed);
     const [signature] = useAtom(signatureAtom);
+    const {t, i18n} = useTranslation();
 
     const styles = {
         page: {
@@ -48,7 +50,7 @@ const PdfTemplate = ({templateRef}) => {
             marginRight: '5rem',
             pageBreakAfter: 'always',
             fontFamily: 'David',
-            direction: 'rtl',
+            direction: i18n.language === 'he' ? 'rtl' : 'ltr',
             textAlign: 'right',
         },
 
@@ -95,7 +97,6 @@ const PdfTemplate = ({templateRef}) => {
     const renderedDate = isProcessing ? reverseNonHebrew(localDate) : localDate;
     console.log({renderedDate, localDate, isProcessing})
     const renderedGDPR = isProcessing ? reverseNonHebrew("GDPR") : "GDPR";
-    const f = s => s;
     return (
         <div style={{
             margin: "auto",
@@ -110,58 +111,58 @@ const PdfTemplate = ({templateRef}) => {
                     <div style={styles.column} className={"leading-5"}>
                         <div style={styles.fullWidth} className={"mb-5"}>
                             <div className={"mb-5 "}>
-                                <h1 className={"font-bold"}>{f('לכבוד:')}</h1>
-                                <h1 className={""}>{f('ההסתדרות הציונית העולמית')}</h1>
-                                <h1 className={""}>{f('ירושלים')}</h1>
+                                <h1 className={"font-bold"}>{t('pdf.lechavod')}</h1>
+                                <h1 className={""}>{t('pdf.histadrut')}</h1>
+                                <h1 className={""}>{t('pdf.jerusalem')}</h1>
                             </div>
                             <div className={"underline text-center font-bold mb-5"}>
-                                <h1 className={""}>{f('בקשה להצטרף להסתדרות הציונית העולמית')}</h1>
+                                <h1 className={""}>{t('pdf.subject')}</h1>
                             </div>
                             <div className={""}>
-                                <h1 className={""}>{f('בהתאם לסעיף 5 לחוקת ההסתדרות הציונית העולמית, ובהתאם לתקנה 1א לתקנות חוקת ההסתדרות הציונית העולמית, אני מבקש בזאת להצטרף כחבר בהסתדרות הציונית העולמית.')}</h1>
+                                <h1 className={""}>{t('pdf.request')}</h1>
                             </div>
                         </div>
                         <div style={styles.fullWidth} className={"mb-5"}>
                             <div className={"mb-5"}>
-                                <h1 className={""}>{f('להלן פרטיי האישיים בהתאם לתקנה 1א(ג) לתקנות החוקה:')}</h1>
+                                <h1 className={""}>{t('pdf.details-intro')}</h1>
                             </div>
                             <div className={""}>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('שם פרטי')}</span> {placeholder(name)}</h1>
+                                    className={"font-bold"}>{t('pdf.firstname')}</span> {placeholder(name)}</h1>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('שם משפחה')}</span> {placeholder(family)}</h1>
+                                    className={"font-bold"}>{t('pdf.lastname')}</span> {placeholder(family)}</h1>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('תאריך לידה')}</span> {placeholder(birthdate)}</h1>
+                                    className={"font-bold"}>{t('pdf.birthdate')}</span> {placeholder(birthdate)}</h1>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('מספר זיהות')}</span> {placeholder(id)}</h1>
+                                    className={"font-bold"}>{t('pdf.id')}</span> {placeholder(id)}</h1>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('ארץ מגוריי הקבועה היא')}</span> {placeholder(country)}
+                                    className={"font-bold"}>{t('pdf.country')}</span> {placeholder(country)}
                                 </h1>
-                                <h1 className={""}><span className={"font-bold"}>{f('בעיר')}</span> {placeholder(city)}
+                                <h1 className={""}><span className={"font-bold"}>{t('pdf.city')}</span> {placeholder(city)}
                                 </h1>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('ברחוב')}</span> {placeholder(street)}</h1>
+                                    className={"font-bold"}>{t('pdf.street')}</span> {placeholder(street)}</h1>
                             </div>
 
                         </div>
                         <div style={styles.fullWidth}>
                             <div className={"mb-5"}>
-                                <h1 className={""}>{f(`אני מסכים לשימושים שיעשו במידע שנאסף לעיל בהתאם לכללי ה-${renderedGDPR} החלים, ככל שחלים, במדינת מגוריי הקבועה.`)}</h1>
+                                <h1 className={""}>{t(`pdf.gdpr`,{renderedGDPR})}</h1>
                             </div>
                             <div className={"mb-5"}>
-                                <h1 className={""}>{f('אני מבקש להצטרף כחבר להסתדרות הציונית העולמית ואני מקבל על עצמי את "תכנית ירושלים".')}</h1>
+                                <h1 className={""}>{t('pdf.join')}</h1>
                             </div>
                             <div className={"mb-5"}>
-                                <h1 className={""}>{f('אני מתחייב באופן בלתי חוזר ונותן בזאת הוראת תשלום לשלם את "השקל הציוני" בשיעורים ובדרכים שתורה לי ההסתדרות הציונית העולמית')}</h1>
+                                <h1 className={""}>{t('pdf.commitment')}</h1>
                             </div>
                         </div>
                         <div style={styles.fullWidth}>
                             <div className={"flex justify-between"}>
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{f('תאריך')}</span> {placeholder(renderedDate)}
+                                    className={"font-bold"}>{t('pdf.date')}</span> {placeholder(renderedDate)}
                                 </h1>
                             </div>
-                            <h1 className={""}><span className={"font-bold"}>{f('חתימה')}</span></h1>
+                            <h1 className={""}><span className={"font-bold"}>{t('pdf.signed')}</span></h1>
                             {placeholder(signature ? <img src={signature} style={{width: '400px', padding: 5}}
                                                           alt={`${name} ${family}`}/> : null)}
                         </div>

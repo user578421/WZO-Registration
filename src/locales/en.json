@@ -13,6 +13,7 @@
     "city": "City",
     "country": "Country",
     "firstName": "First Name",
+    "formTitle": "WZO Registration Form",
     "lastName": "Last Name",
     "signature": "Signature",
     "street": "Street"
@@ -29,5 +30,25 @@
     "fill-in-form": "Fill out the form below",
     "remindPdf": "Dont forget to add the PDF as an attachment"
   },
-  "intructions-title": "Instructions:"
+  "intructions-title": "Instructions:",
+  "pdf": {
+    "birthdate": "Date Of Birth",
+    "city": "City",
+    "commitment": "I commit irrevocably and hereby authorize payment of the \"Zionist Shekel\" in the amounts and methods determined by the World Zionist Organization.",
+    "country": "Country Of Residence",
+    "date": "Date",
+    "details-intro": "The following are my personal details in accordance with Regulation 1A(c) of the Constitution Regulations: ",
+    "firstname": "First Name",
+    "gdpr": "I agree to the use of the information collected above in accordance with the GDPR regulations, as applicable, in my country of residence.",
+    "histadrut": "World Zionist Organization",
+    "id": "Identification Number",
+    "jerusalem": "Jerusalem",
+    "join": "I hereby request to join the World Zionist Organization and I accept the Jerusalem Program.",
+    "lastname": "Last Name",
+    "lechavod": "To whom it may concern:",
+    "request": "In accordance with Article 5 of the World Zionist Organization Constitution and Regulation 1A of the Regulations of the World Zionist Organization Constitution, I hereby request to join the World Zionist Organization. ",
+    "signed": "Signature",
+    "street": "Street",
+    "subject": "Request to join the World Zionist Organization"
+  }
 }
