@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 
 import {InputForm} from "./InputForm.jsx";
 import PdfTemplate from "./PdfTemplate.jsx";
@@ -32,6 +32,12 @@ function App() {
     const [family] = useAtom(familyNameAtom);
     const {t, i18n} = useTranslation();
     const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+    useEffect(() => {
+        //if language is not in the list of supported languages, default to english
+        if (!Object.keys(locales).includes(i18n.language)) {
+            i18n.changeLanguage("en");
+        }
+    }, [i18n.language])
     const flagIcon = (lang) => {
         return <span className="inline-flex items-center justify-center">
                                 <img
