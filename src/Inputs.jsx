@@ -75,13 +75,14 @@ export const DropdownInput = ({label, name, options, atom}) => {
     return (<div className="relative z-0 w-full mb-5">
         <select
             name={name}
+            defaultValue={""}
             onChange={e => {
                 console.log('update', e.target.value, name)
                 return setValue(e.target.value);
             }}
             className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
         >
-            <option value="" selected></option>
+            <option value=""></option>
             {options.map((option, index) => (
                 <option key={index} value={option.value}>{option.label}</option>))}
         </select>

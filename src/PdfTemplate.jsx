@@ -46,28 +46,22 @@ const PdfTemplate = ({templateRef}) => {
     const styles = {
         page: {
             overflow: 'hidden',
-            marginLeft: '5rem',
-            marginRight: '5rem',
+            marginLeft: '1rem',
+            marginRight: '1rem',
             pageBreakAfter: 'always',
-            fontFamily: 'David',
+            fontFamily: 'Arimo',
             direction: i18n.language === 'he' ? 'rtl' : 'ltr',
-            textAlign: 'right',
+            textAlign: i18n.language === 'he' ? 'right' : 'left',
         },
 
         columnLayout: {
             display: 'flex',
             justifyContent: 'space-between',
-            margin: '3rem 0 5rem 0',
-            gap: '2rem',
         },
 
         column: {
             display: 'flex',
             flexDirection: 'column',
-        },
-
-        spacer2: {
-            height: '2rem',
         },
 
         fullWidth: {
@@ -102,15 +96,15 @@ const PdfTemplate = ({templateRef}) => {
             margin: "auto",
             maxWidth: '18cm',
             minWidth: '18cm',
-            overflow: 'scroll',
+            overflow: 'auto',
             // opacity: 0,
             // height: 0,
         }}>
             <div style={styles.page} ref={templateRef}>
-                <div style={styles.columnLayout} className={"text-sm"}>
-                    <div style={styles.column} className={"leading-5"}>
+                <div style={styles.columnLayout} className={"text-sm text-justify"}>
+                    <div style={styles.column} className={""}>
                         <div style={styles.fullWidth} className={"mb-5"}>
-                            <div className={"mb-5 "}>
+                            <div className={"mb-5"}>
                                 <h1 className={"font-bold"}>{t('pdf.lechavod')}</h1>
                                 <h1 className={""}>{t('pdf.histadrut')}</h1>
                                 <h1 className={""}>{t('pdf.jerusalem')}</h1>
@@ -147,7 +141,7 @@ const PdfTemplate = ({templateRef}) => {
                         </div>
                         <div style={styles.fullWidth}>
                             <div className={"mb-5"}>
-                                <h1 className={""}>{t(`pdf.gdpr`,{renderedGDPR})}</h1>
+                                <h1 className={""}>{t(`pdf.gdpr`,{gdpr:renderedGDPR})}</h1>
                             </div>
                             <div className={"mb-5"}>
                                 <h1 className={""}>{t('pdf.join')}</h1>

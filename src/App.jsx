@@ -6,6 +6,8 @@ import {Button, SubTitle, Title} from "./Inputs.jsx";
 import jsPDF from "jspdf";
 import {y} from './david1.js'
 import {x} from './david2.js'
+import {z} from './Arimo-normal.js'
+import {a} from './Arimo-bold.js'
 import {useAtom} from "jotai";
 import {familyNameAtom, isFormFilledAtom, isProcessingAtom, nameAtom} from "./atoms.js";
 import {ToastContainer} from "react-toastify";
@@ -29,11 +31,7 @@ function App() {
     const [name] = useAtom(nameAtom);
     const [family] = useAtom(familyNameAtom);
     const {t, i18n} = useTranslation();
-    console.log({isFormFilled, i18n})
     const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-    // A neat Language switcher at the top right corner using tailwindcss with a dropdown menu
-    // Highlight the current language
-    // Langauges shold popout when the mouse hovers over the language button
     const flagIcon = (lang) => {
         return <span className="inline-flex items-center justify-center">
                                 <img
@@ -44,7 +42,7 @@ function App() {
     return (
         <div className="min-h-screen bg-gray-100 p-0 sm:p-12 flex justify-center flex-col items-center"
                 dir={i18n.dir()}>
-            <div className={`flex justify-${i18n.dir() === "ltr" ? "end" : "start"} w-full`}>
+            <div className={`flex absolute left-1/2 transform -translate-x-1/2 top-1.5`}>
                 <div className={`relative inline-block text-left`}>
                     <div>
                         <button type="button"
@@ -134,10 +132,12 @@ function App() {
                         unit: "px",
                         format: "a3",
                     });
-                    doc.setFont("David", "normal")
                     doc.setFontSize(10);
-                    doc.setR2L(true)
-                    setIsProcessingAtom(true)
+                    doc.setFont("Arimo", "normal")
+                    if(i18n.language === "he") {
+                        doc.setR2L(true)
+                        setIsProcessingAtom(true)
+                    }
                     setTimeout(() => {
                         doc.html(templateRef.current, {
                             async callback(doc) {

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "David";
-    src: url("./David.ttf") format("truetype");
+    font-family: "Arimo";
+    src: url("./Arimo-Regular.ttf") format("truetype");
     font-weight: normal;
 }
