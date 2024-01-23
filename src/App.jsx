@@ -21,7 +21,8 @@ const locales = {
     fr: "Français",
     ru: "русский",
     ua: "український",
-    he: "עברית"
+    he: "עברית",
+    es: "Español"
 }
 
 function App() {
@@ -114,7 +115,17 @@ function App() {
                                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                       role="menuitem">
                                         {flagIcon("he")}
-                                        עברית</a>
+                                        עברית
+                                </a>
+                                <a href="#" onClick={() => {
+                                    i18n.changeLanguage("es");
+                                    setLangDropdownOpen(false)
+                                }}
+                                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                      role="menuitem">
+                                        {flagIcon("es")}
+                                        Español
+                                </a>
                             </div>
                         </div>
                     )}

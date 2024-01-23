@@ -6,6 +6,7 @@ import fr from "./locales/fr.json";
 import ru from "./locales/ru.json";
 import ua from "./locales/ua.json";
 import he from "./locales/he.json";
+import es from "./locales/es.json";
 
 i18n
     .use(LanguageDetector)
@@ -29,6 +30,9 @@ i18n
             },
             he: {
                 translation: he
+            },
+            es: {
+                translation: es
             }
         },
         defaultNS: "translation",

@@ -96,8 +96,8 @@ const PdfTemplate = ({templateRef}) => {
     return (
         <div style={{
             margin: "auto",
-            maxWidth: '18cm',
-            minWidth: '18cm',
+            maxWidth: '17cm',
+            minWidth: '17cm',
             overflow: 'auto',
             // opacity: 0,
             // height: 0,
