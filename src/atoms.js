@@ -56,7 +56,8 @@ export const isFormFilledAtom = atom(get => {
     const birthdate = get(birthdateAtom);
     const signature = get(signatureAtom);
     //if language is russian, we don't need to check the id
-    if (country === 'Russia') {
+    const requireId = !["Russia","France"].includes(country);
+    if (!requireId) {
         id = true;
     }
     console.log({name, familyName, id, country, city, street, birthdate})

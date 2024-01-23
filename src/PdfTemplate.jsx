@@ -40,7 +40,7 @@ const PdfTemplate = ({templateRef}) => {
     const [birthdate] = useAtom(birthdateAtomReversed);
     const [id] = useAtom(idAtomReversed);
     const [country] = useAtom(countryAtomReversed);
-    const isRussian = country === 'Russia';
+    const requireId = !["Russia","France"].includes(country);
     const translatedCountry = t(`country.${country}`);
     const [city] = useAtom(cityAtomReversed);
     const [street] = useAtom(streetAtomReversed);
@@ -129,7 +129,7 @@ const PdfTemplate = ({templateRef}) => {
                                     className={"font-bold"}>{t('pdf.lastname')}</span> {placeholder(family)}</h1>
                                 <h1 className={""}><span
                                     className={"font-bold"}>{t('pdf.birthdate')}</span> {placeholder(birthdate)}</h1>
-                                {isRussian ? null : <h1 className={""}>
+                                {!requireId ? null : <h1 className={""}>
                                     <span className={"font-bold"}>{t('pdf.id')}</span> {placeholder(id)}</h1>
                                 }
                                 <h1 className={""}><span
