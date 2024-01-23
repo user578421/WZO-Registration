@@ -34,13 +34,13 @@ import {useTranslation} from "react-i18next";
 
 const PdfTemplate = ({templateRef}) => {
     const {t, i18n} = useTranslation();
-    const isRussian = i18n.language === 'ru';
     
     const [name] = useAtom(nameAtomReversed);
     const [family] = useAtom(familyNameAtomReversed);
     const [birthdate] = useAtom(birthdateAtomReversed);
     const [id] = useAtom(idAtomReversed);
     const [country] = useAtom(countryAtomReversed);
+    const isRussian = country === 'Russia';
     const translatedCountry = t(`country.${country}`);
     const [city] = useAtom(cityAtomReversed);
     const [street] = useAtom(streetAtomReversed);

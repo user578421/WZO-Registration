@@ -42,6 +42,7 @@ export const countryOptions = [
 
 export const InputForm = () => {
     const {t,i18n} = useTranslation();
+    const [country]=useAtom(countryAtom);
     const translatedCountryOptions = useMemo(() => countryOptions.map(({value, label}) => ({value, label: t(`country.${label}`)})), [i18n.language]);
         //if input language is russian then Id is not required
     return (<div>
@@ -51,7 +52,7 @@ export const InputForm = () => {
                 <TextInput label={t("input.firstName")} name="name" atom={nameAtom}/>
                 <TextInput label={t("input.lastName")} name="familyName" atom={familyNameAtom}/>
                 {/*<TextInput label="Email" name="email" type="email" atom={emailAtom}/>*/}
-                {i18n.language !== 'ru' ? <TextInput label={t("input.Id")} name="id" type="text" atom={idAtom}/> : null}
+                {country !== 'Russia' ? <TextInput label={t("input.Id")} name="id" type="text" atom={idAtom}/> : null}
                 {/*country city street*/}
                 <DropdownInput label={t("input.country")} name="country" atom={countryAtom} options={translatedCountryOptions}/>
                 <TextInput label={t("input.city")} name="city" type="text" atom={cityAtom}/>
