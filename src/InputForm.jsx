@@ -37,6 +37,7 @@ export const countryOptions = [
     {value: "Brazil", label: "Brazil"},
     {value: "Australia", label: "Australia"},
     {value: "Costa Rica", label: "Costa Rica"},
+    {value: "Spain", label: "Spain"},
 ]
 
 export const InputForm = () => {
