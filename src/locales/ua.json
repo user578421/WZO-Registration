@@ -2,6 +2,28 @@
   "button": {
     "download-pdf": "Завантажити PDF"
   },
+  "country": {
+    "Argentina": "Аргентина",
+    "Australia": "Австралія",
+    "Austria": "Австрія",
+    "Belgium": "Бельгія",
+    "Brazil": "Бразилія",
+    "Chile": "Чилі",
+    "Colombia": "Колумбія",
+    "Costa Rica": "Коста-Ріка",
+    "Denmark": "Данія",
+    "France": "Франція",
+    "Germany": "Німеччина",
+    "Hungary": "Угорщина",
+    "Italy": "Італія",
+    "Mexico": "Мексика",
+    "Peru": "Перу",
+    "Russia": "Росія",
+    "South Africa": "Південна Африка",
+    "Ukraine": "Україна",
+    "Uruguay": "Уругвай",
+    "Venezuela": "Венесуела"
+  },
   "email": {
     "body": "Додаток до листа: Форма реєстрації WZO",
     "send-button": "Написати лист до офісу WZO",
@@ -11,10 +33,12 @@
     "Id": "Id",
     "birthdate": "Дата народження",
     "city": "Місто",
+    "clear": "Очистити",
     "country": "Країна",
     "firstName": "Ім'я",
-    "formTitle": "",
+    "formTitle": "Форма реєстрації WZO",
     "lastName": "Прізвище",
+    "save": "Зберегти",
     "signature": "Підпис",
     "street": "Вулиця"
   },

@@ -2,6 +2,28 @@
   "button": {
     "download-pdf": "Download PDF"
   },
+  "country": {
+    "Argentina": "Argentina",
+    "Australia": "Australia",
+    "Austria": "Austria",
+    "Belgium": "Belgium",
+    "Brazil": "Brazil",
+    "Chile": "Chile",
+    "Colombia": "Colombia",
+    "Costa Rica": "Costa Rica",
+    "Denmark": "Denmark",
+    "France": "France",
+    "Germany": "Germany",
+    "Hungary": "Hungary",
+    "Italy": "Italy",
+    "Mexico": "Mexico",
+    "Peru": "Peru",
+    "Russia": "Russia",
+    "South Africa": "South Africa",
+    "Ukraine": "Ukraine",
+    "Uruguay": "Uruguay",
+    "Venezuela": "Venezuela"
+  },
   "email": {
     "body": "Please find attached the WZO Registration Form",
     "send-button": "Compose Email to WZO Office",
@@ -11,10 +33,12 @@
     "Id": "Id",
     "birthdate": "Birthdate",
     "city": "City",
+    "clear": "Clear",
     "country": "Country",
     "firstName": "First Name",
     "formTitle": "WZO Registration Form",
     "lastName": "Last Name",
+    "save": "Save",
     "signature": "Signature",
     "street": "Street"
   },

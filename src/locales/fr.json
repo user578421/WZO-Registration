@@ -2,6 +2,28 @@
   "button": {
     "download-pdf": "Télécharger le PDF"
   },
+  "country": {
+    "Argentina": "Argentine",
+    "Australia": "Australie",
+    "Austria": "Autriche",
+    "Belgium": "Belgique",
+    "Brazil": "Brésil",
+    "Chile": "Chili",
+    "Colombia": "Colombie",
+    "Costa Rica": "Costa Rica",
+    "Denmark": "Danemark",
+    "France": "France",
+    "Germany": "Allemagne",
+    "Hungary": "Hongrie",
+    "Italy": "Italie",
+    "Mexico": "Mexique",
+    "Peru": "Pérou",
+    "Russia": "Russie",
+    "South Africa": "Afrique du Sud",
+    "Ukraine": "Ukraine",
+    "Uruguay": "Uruguay",
+    "Venezuela": "Venezuela"
+  },
   "email": {
     "body": "Veuillez trouver ci-joint le formulaire d'inscription WZO",
     "send-button": "Composer un e-mail au bureau WZO",
@@ -11,10 +33,12 @@
     "Id": "Id",
     "birthdate": "Date de naissance",
     "city": "Ville",
+    "clear": "Effacer",
     "country": "Pays",
     "firstName": "Prénom",
-    "formTitle": "",
+    "formTitle": "Formulaire d'inscription WZO",
     "lastName": "Nom de famille",
+    "save": "Sauvegarder",
     "signature": "Signature",
     "street": "Rue"
   },

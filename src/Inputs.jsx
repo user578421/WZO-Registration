@@ -3,6 +3,7 @@ import {useEffect, useRef} from "react";
 import SignaturePad from "signature_pad";
 import {signatureAtom, signaturePadAtom} from "./atoms.js";
 import {toast} from "react-toastify";
+import {useTranslation} from "react-i18next";
 
 export const TextInput = ({label, name, type = "text", atom}) => {
     const [value, setValue] = useAtom(atom)
@@ -134,11 +135,12 @@ export const SignatureInput = ({label, name}) => {
             setValue(signaturePad.toDataURL())
         }
     }
+    const {t} = useTranslation();
     return (<div className="relative z-0 w-full mb-5">
         <canvas ref={canvasRef} width="300" height="100" className="border-2 border-gray-300"/>
         <div className="flex space-x-4">
-            <Button onClick={clear}>Clear</Button>
-            <Button onClick={save}>Save</Button>
+            <Button onClick={clear}>{t("input.clear")}</Button>
+            <Button onClick={save}>{t("input.save")}</Button>
         </div>
         <label htmlFor={name} className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">{label}</label>
         <span className="text-sm text-red-600 hidden" id="error">Signature is required</span>

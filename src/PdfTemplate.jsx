@@ -33,16 +33,18 @@ import {
 import {useTranslation} from "react-i18next";
 
 const PdfTemplate = ({templateRef}) => {
+    const {t, i18n} = useTranslation();
+    const isRussian = i18n.language === 'ru';
+    
     const [name] = useAtom(nameAtomReversed);
     const [family] = useAtom(familyNameAtomReversed);
     const [birthdate] = useAtom(birthdateAtomReversed);
     const [id] = useAtom(idAtomReversed);
     const [country] = useAtom(countryAtomReversed);
+    const translatedCountry = t(`country.${country}`);
     const [city] = useAtom(cityAtomReversed);
     const [street] = useAtom(streetAtomReversed);
     const [signature] = useAtom(signatureAtom);
-    const {t, i18n} = useTranslation();
-
     const styles = {
         page: {
             overflow: 'hidden',
@@ -127,12 +129,14 @@ const PdfTemplate = ({templateRef}) => {
                                     className={"font-bold"}>{t('pdf.lastname')}</span> {placeholder(family)}</h1>
                                 <h1 className={""}><span
                                     className={"font-bold"}>{t('pdf.birthdate')}</span> {placeholder(birthdate)}</h1>
+                                {isRussian ? null : <h1 className={""}>
+                                    <span className={"font-bold"}>{t('pdf.id')}</span> {placeholder(id)}</h1>
+                                }
                                 <h1 className={""}><span
-                                    className={"font-bold"}>{t('pdf.id')}</span> {placeholder(id)}</h1>
-                                <h1 className={""}><span
-                                    className={"font-bold"}>{t('pdf.country')}</span> {placeholder(country)}
+                                    className={"font-bold"}>{t('pdf.country')}</span> {placeholder(translatedCountry)}
                                 </h1>
-                                <h1 className={""}><span className={"font-bold"}>{t('pdf.city')}</span> {placeholder(city)}
+                                <h1 className={""}><span
+                                    className={"font-bold"}>{t('pdf.city')}</span> {placeholder(city)}
                                 </h1>
                                 <h1 className={""}><span
                                     className={"font-bold"}>{t('pdf.street')}</span> {placeholder(street)}</h1>
@@ -141,7 +145,7 @@ const PdfTemplate = ({templateRef}) => {
                         </div>
                         <div style={styles.fullWidth}>
                             <div className={"mb-5"}>
-                                <h1 className={""}>{t(`pdf.gdpr`,{gdpr:renderedGDPR})}</h1>
+                                <h1 className={""}>{t(`pdf.gdpr`, {gdpr: renderedGDPR})}</h1>
                             </div>
                             <div className={"mb-5"}>
                                 <h1 className={""}>{t('pdf.join')}</h1>

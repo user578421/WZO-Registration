@@ -2,6 +2,28 @@
   "button": {
     "download-pdf": "הורדת קובץ PDF"
   },
+  "country": {
+    "Argentina": "ארגנטינה",
+    "Australia": "אוסטרליה",
+    "Austria": "אוסטריה",
+    "Belgium": "בלגיה",
+    "Brazil": "ברזיל",
+    "Chile": "צ'ילה",
+    "Colombia": "קולומביה",
+    "Costa Rica": "קוסטה ריקה",
+    "Denmark": "דנמרק",
+    "France": "צרפת",
+    "Germany": "גרמניה",
+    "Hungary": "הונגריה",
+    "Italy": "איטליה",
+    "Mexico": "מקסיקו",
+    "Peru": "פרו",
+    "Russia": "רוסיה",
+    "South Africa": "דרום אפריקה",
+    "Ukraine": "אוקראינה",
+    "Uruguay": "אורוגוואי",
+    "Venezuela": "ונצואלה"
+  },
   "email": {
     "body": "נא להוריד את טופס ההרשמה מצורף",
     "send-button": "שליחת דואר אלקטרוני למשרד ה-WZO",
@@ -11,10 +33,12 @@
     "Id": "תעודת זהות",
     "birthdate": "תאריך לידה",
     "city": "עיר",
+    "clear": "נקה",
     "country": "מדינה",
     "firstName": "שם פרטי",
     "formTitle": "טופס הרשמה ל-WZO",
     "lastName": "שם משפחה",
+    "save": "שמור",
     "signature": "חתימה",
     "street": "רחוב"
   },
