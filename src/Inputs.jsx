@@ -136,8 +136,10 @@ export const SignatureInput = ({label, name}) => {
         }
     }
     const {t} = useTranslation();
-    return (<div className="relative z-0 w-full mb-5">
-        <canvas ref={canvasRef} width="300" height="100" className="border-2 border-gray-300"/>
+    return (<div className="relative z-0 w-full mb-5 flex flex-col items-center">
+        <div>
+            <canvas ref={canvasRef} width="300" height="100" className="border-2 border-gray-300"/>
+        </div>
         <div className="flex space-x-4">
             <Button onClick={clear}>{t("input.clear")}</Button>
             <Button onClick={save}>{t("input.save")}</Button>
