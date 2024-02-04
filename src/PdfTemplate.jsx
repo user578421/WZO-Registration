@@ -32,7 +32,8 @@ import {
 } from "./atoms.js";
 import {useTranslation} from "react-i18next";
 
-const PdfTemplate = ({templateRef}) => {
+//this is rendered twice: once for the preview and once for the actual pdf
+const PdfTemplate = ({templateRef,isPdfRenderer}) => {
     const {t, i18n} = useTranslation();
     
     const [name] = useAtom(nameAtomReversed);
@@ -46,6 +47,14 @@ const PdfTemplate = ({templateRef}) => {
     const [street] = useAtom(streetAtomReversed);
     const [signature] = useAtom(signatureAtom);
     const styles = {
+        wrapper : {
+            margin: "auto",
+            maxWidth: isPdfRenderer? '17cm' : '100%',
+            minWidth: isPdfRenderer? '17cm' : '100%',
+            overflow: 'auto',
+            // opacity: 0,
+            // height: 0,
+        },
         page: {
             overflow: 'hidden',
             marginLeft: '1rem',
@@ -94,14 +103,7 @@ const PdfTemplate = ({templateRef}) => {
     console.log({renderedDate, localDate, isProcessing})
     const renderedGDPR = isProcessing ? reverseNonHebrew("GDPR") : "GDPR";
     return (
-        <div style={{
-            margin: "auto",
-            maxWidth: '17cm',
-            minWidth: '17cm',
-            overflow: 'auto',
-            // opacity: 0,
-            // height: 0,
-        }}>
+        <div style={styles.wrapper}>
             <div style={styles.page} ref={templateRef}>
                 <div style={styles.columnLayout} className={"text-sm text-justify"}>
                     <div style={styles.column} className={""}>

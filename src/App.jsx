@@ -140,9 +140,12 @@ function App() {
                 </ul>
             </div>
             <InputForm/>
+            {/*This is rendered twice: once as preview and once as a pdf*/}
+            <div className={"opacity-0 absolute"}>
+                <PdfTemplate templateRef={templateRef} isPdfRenderer={true}/>
+            </div>
             <div className={"max-w-screen-sm"}>
-                
-                <PdfTemplate templateRef={templateRef}/>
+                <PdfTemplate isPdfRenderer={false}/>
             </div>
             <Button
                 disabled={!isFormFilled}
