@@ -83,7 +83,6 @@ function App() {
             </div>
             <Button
                 onClick={toggleStepHandler}>{wizardStep === 0 ? t("button.next") : t("button.back")}</Button>
-
             <ToastContainer/>
         </div>
     );
