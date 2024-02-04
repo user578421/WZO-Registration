@@ -108,13 +108,14 @@ export const Button = ({children, disabled, ...rest}) => {
 export const SignatureInput = ({label, name}) => {
     const [value, setValue] = useAtom(signatureAtom)
     const [signaturePad, setSignaturePad] = useAtom(signaturePadAtom)
-
+   
     const canvasRef = useRef(null)
     useEffect(() => {
         const canvas = canvasRef.current
+        
         const signaturePad = new SignaturePad(canvas, {
             onEnd: () => {
-                setValue(signaturePad.toDataURL())
+                console.log('update sig')
             },
             backgroundColor: 'white',
             penColor: 'black',
@@ -122,19 +123,21 @@ export const SignatureInput = ({label, name}) => {
             maxWidth: 1,
         })
         setSignaturePad(signaturePad)
+        
+        const afterStrokeHandler = (e) => {
+            setValue(signaturePad.toDataURL())
+        }
+        signaturePad.addEventListener('endStroke', afterStrokeHandler)
+        return () => {
+            signaturePad.removeEventListener('endStroke', afterStrokeHandler)
+        }
     }, [canvasRef.current]);
 
     const clear = () => {
-        signaturePad.clear()
+        signaturePad?.clear()
         setValue(null)
     }
-    const save = () => {
-        if (signaturePad.isEmpty()) {
-            toast.error('Please provide a signature first')
-        } else {
-            setValue(signaturePad.toDataURL())
-        }
-    }
+  
     const {t} = useTranslation();
     return (<div className="relative z-0 w-full mb-5 flex flex-col items-center">
         <div>
@@ -142,7 +145,6 @@ export const SignatureInput = ({label, name}) => {
         </div>
         <div className="flex space-x-4">
             <Button onClick={clear}>{t("input.clear")}</Button>
-            <Button onClick={save}>{t("input.save")}</Button>
         </div>
         <label htmlFor={name} className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">{label}</label>
         <span className="text-sm text-red-600 hidden" id="error">Signature is required</span>

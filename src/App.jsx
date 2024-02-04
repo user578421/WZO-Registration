@@ -140,7 +140,10 @@ function App() {
                 </ul>
             </div>
             <InputForm/>
-            <PdfTemplate templateRef={templateRef}/>
+            <div className={"max-w-screen-sm"}>
+                
+                <PdfTemplate templateRef={templateRef}/>
+            </div>
             <Button
                 disabled={!isFormFilled}
                 onClick={() => {
