@@ -21,14 +21,16 @@
 
 import {useAtom} from "jotai";
 import {
-    birthdateAtom, birthdateAtomReversed,
-    cityAtom, cityAtomReversed,
-    countryAtom, countryAtomReversed,
-    familyNameAtom, familyNameAtomReversed,
-    idAtom, idAtomReversed, isProcessingAtom,
-    nameAtom, nameAtomReversed, reverseNonHebrew, signatureAtom,
-    streetAtom,
-    streetAtomReversed
+    birthdateAtomReversed,
+    cityAtomReversed,
+    countryAtomReversed,
+    familyNameAtomReversed,
+    idAtomReversed,
+    isProcessingAtom,
+    nameAtomReversed,
+    reverseNonHebrew,
+    signatureAtom,
+    streetAtomReversed,
 } from "./atoms.js";
 import {useTranslation} from "react-i18next";
 
@@ -61,8 +63,8 @@ const PdfTemplate = ({templateRef,isPdfRenderer}) => {
             marginRight: '1rem',
             pageBreakAfter: 'always',
             fontFamily: 'Arimo',
-            direction: i18n.language === 'he' ? 'rtl' : 'ltr',
-            textAlign: i18n.language === 'he' ? 'right' : 'left',
+            direction: i18n.dir(),
+            textAlign: 'start',
         },
 
         columnLayout: {

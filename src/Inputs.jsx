@@ -2,11 +2,10 @@
 import {useEffect, useRef} from "react";
 import SignaturePad from "signature_pad";
 import {signatureAtom, signaturePadAtom} from "./atoms.js";
-import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
 
 export const TextInput = ({label, name, type = "text", atom}) => {
-    const [value, setValue] = useAtom(atom)
+    const [value, setValue] = useAtom(atom);
     return (
         <div className="relative z-0 w-full mb-5">
             <input
@@ -16,7 +15,7 @@ export const TextInput = ({label, name, type = "text", atom}) => {
                 required
                 value={value}
                 onChange={e => {
-                    console.log('update', e.target.value, name)
+                    console.log('update', e.target.value, name);
                     return setValue(e.target.value);
                 }}
                 className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
@@ -29,7 +28,7 @@ export const TextInput = ({label, name, type = "text", atom}) => {
 
 
 export const RadioInput = ({label, name, options, atom}) => {
-    const [value, setValue] = useAtom(atom)
+    const [value, setValue] = useAtom(atom);
     return (
 
         <fieldset className="relative z-0 w-full p-px mb-5">
@@ -54,7 +53,7 @@ export const RadioInput = ({label, name, options, atom}) => {
 };
 
 export const DateInput = ({label, name, atom}) => {
-    const [value, setValue] = useAtom(atom)
+    const [value, setValue] = useAtom(atom);
     return (<div className="relative z-0 w-full mb-5">
         <input
             type="date"
@@ -72,13 +71,13 @@ export const DateInput = ({label, name, atom}) => {
 
 
 export const DropdownInput = ({label, name, options, atom}) => {
-    const [value, setValue] = useAtom(atom)
+    const [value, setValue] = useAtom(atom);
     return (<div className="relative z-0 w-full mb-5">
         <select
             name={name}
             defaultValue={""}
             onChange={e => {
-                console.log('update', e.target.value, name)
+                console.log('update', e.target.value, name);
                 return setValue(e.target.value);
             }}
             className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
@@ -106,38 +105,38 @@ export const Button = ({children, disabled, ...rest}) => {
 };
 
 export const SignatureInput = ({label, name}) => {
-    const [value, setValue] = useAtom(signatureAtom)
-    const [signaturePad, setSignaturePad] = useAtom(signaturePadAtom)
-   
-    const canvasRef = useRef(null)
+    const [value, setValue] = useAtom(signatureAtom);
+    const [signaturePad, setSignaturePad] = useAtom(signaturePadAtom);
+
+    const canvasRef = useRef(null);
     useEffect(() => {
         const canvas = canvasRef.current
-        
+        ;
         const signaturePad = new SignaturePad(canvas, {
             onEnd: () => {
-                console.log('update sig')
+                console.log('update sig');
             },
             backgroundColor: 'white',
             penColor: 'black',
             minWidth: 1,
             maxWidth: 1,
-        })
-        setSignaturePad(signaturePad)
-        
+        });
+        setSignaturePad(signaturePad);
+
         const afterStrokeHandler = (e) => {
-            setValue(signaturePad.toDataURL())
-        }
-        signaturePad.addEventListener('endStroke', afterStrokeHandler)
+            setValue(signaturePad.toDataURL());
+        };
+        signaturePad.addEventListener('endStroke', afterStrokeHandler);
         return () => {
-            signaturePad.removeEventListener('endStroke', afterStrokeHandler)
-        }
+            signaturePad.removeEventListener('endStroke', afterStrokeHandler);
+        };
     }, [canvasRef.current]);
 
     const clear = () => {
-        signaturePad?.clear()
-        setValue(null)
-    }
-  
+        signaturePad?.clear();
+        setValue(null);
+    };
+
     const {t} = useTranslation();
     return (<div className="relative z-0 w-full mb-5 flex flex-col items-center">
         <div>
@@ -149,7 +148,7 @@ export const SignatureInput = ({label, name}) => {
         <label htmlFor={name} className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">{label}</label>
         <span className="text-sm text-red-600 hidden" id="error">Signature is required</span>
     </div>);
-}
+};
 
 
 export const Title = ({children}) => (<h1 className="text-2xl font-bold mb-2 mt-2 w-1/10">{children}</h1>);
