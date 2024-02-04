@@ -12,22 +12,22 @@ import {
     nameAtom,
     signatureAtom,
     streetAtom,
-    wizardStepAtom
+    wizardStepAtom,
 } from "./atoms.js";
 import {toast, ToastContainer} from "react-toastify";
 import {useTranslation} from "react-i18next";
 import './i18n.js';
-import {y} from './david1.js'
-import {x} from './david2.js'
-import {z} from './Arimo-normal.js'
-import {a} from './Arimo-bold.js'
+import {y} from './david1.js';
+import {x} from './david2.js';
+import {z} from './Arimo-normal.js';
+import {a} from './Arimo-bold.js';
 import 'react-toastify/dist/ReactToastify.css';
 import {LanguageSwitcher} from "./LanguageSwitcher.jsx";
 import {PreviewAndSendStep} from "./PreviewAndSendStep.jsx";
 
 function App() {
     const {t, i18n} = useTranslation();
-    const [wizardStep, setWizardStep] = useAtom(wizardStepAtom)
+    const [wizardStep, setWizardStep] = useAtom(wizardStepAtom);
     const [name] = useAtom(nameAtom);
     const [familyName] = useAtom(familyNameAtom);
     const [id] = useAtom(idAtom);
@@ -59,16 +59,16 @@ function App() {
             if (missingFields.length > 0) {
                 toast.error(t("error.missingFields", {missingFields: missingFields.join(", ")}));
             } else {
-                setWizardStep(1)
+                setWizardStep(1);
             }
         } else {
-            setWizardStep(0)
+            setWizardStep(0);
         }
-    }
+    };
 
     return (
         <div
-            className="min-h-screen bg-gray-100 p-4 sm:p-12 flex justify-center flex-col items-center"
+            className="min-h-screen bg-gray-100 p-4 flex justify-center flex-col items-center"
             dir={i18n.dir()}
         >
             <LanguageSwitcher/>
@@ -80,12 +80,17 @@ function App() {
                     <li>{t("instruction.click")}</li>
                 </ul>
             </div>
-            <div className="mx-auto max-w-full px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+            <div className="mx-auto max-w-full px-6 py-6 bg-white border-0 shadow-lg rounded-3xl">
                 <h1 className="text-2xl font-bold mb-8 text-center">{t("input.formTitle")}</h1>
                 {wizardStep === 0 ? <InputStep/> : <PreviewAndSendStep/>}
+                <div className="w-full flex justify-center">
+                    <div className="w-60 my-3">
+                        <Button onClick={toggleStepHandler}>
+                            {wizardStep === 0 ? t("button.next") : t("button.back")}
+                        </Button>
+                    </div>
+                </div>
             </div>
-            <Button
-                onClick={toggleStepHandler}>{wizardStep === 0 ? t("button.next") : t("button.back")}</Button>
             <ToastContainer/>
         </div>
     );

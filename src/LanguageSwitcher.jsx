@@ -35,7 +35,8 @@ export const LanguageSwitcher = () => {
                     />
                 </span>;
     }
-    return <div className={`flex absolute left-1/2 transform -translate-x-1/2 top-1.5`}>
+
+    return <div className={`flex justify-center`}>
         <div ref={languageDropdownRef} className={`relative inline-block text-start`}>
             <div>
                 <button

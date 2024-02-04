@@ -39,7 +39,7 @@
     "Id": "Id",
     "birthdate": "Date de naissance",
     "city": "Ville",
-    "clear": "Effacer",
+    "clear-signature": "Effacer la signature",
     "country": "Pays",
     "firstName": "Prénom",
     "formTitle": "Formulaire d'inscription WZO",

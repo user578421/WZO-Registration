@@ -96,7 +96,8 @@ export const Button = ({children, disabled, ...rest}) => {
         id="button"
         type="button"
         className={`w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-pink-500 hover:bg-pink-600 hover:shadow-lg focus:outline-none
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'}`}
+            ${disabled ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'}
+        `}
         disabled={disabled}
         {...rest}
     >
@@ -142,7 +143,7 @@ export const SignatureInput = ({label, name}) => {
     };
 
     const {t} = useTranslation();
-    return (<div className="relative z-0 w-full mb-5 flex flex-col items-center">
+    return (<div className="relative z-0 w-full flex flex-col items-center pt-5">
         <div>
             <canvas
                 ref={canvasRef}
@@ -150,10 +151,14 @@ export const SignatureInput = ({label, name}) => {
                 className="border-2 border-gray-300"
             />
         </div>
-        <div className="flex space-x-4">
-            <Button onClick={clear}>{t("input.clear")}</Button>
+        <div className="flex space-x-4 mt-2">
+            <Button onClick={clear}>{t("input.clear-signature")}</Button>
         </div>
-        <label htmlFor={name} className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">{label}</label>
+        <div className={'text-start w-full'}>
+            {/* The purpose of the input is in order to make the label render with transform to make it smaller */}
+            <input type={'hidden'} name={name}/>
+            <label htmlFor={name} className="absolute duration-300 top-3 z-1 origin-0 text-gray-500">{label}</label>
+        </div>
         <span className="text-sm text-red-600 hidden" id="error">Signature is required</span>
     </div>);
 };

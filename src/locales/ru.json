@@ -39,7 +39,7 @@
     "Id": "Id",
     "birthdate": "Дата рождения",
     "city": "Город",
-    "clear": "Очистить",
+    "clear-signature": "Очистить подпись",
     "country": "Страна",
     "firstName": "Имя",
     "formTitle": "Форма регистрации WZO",

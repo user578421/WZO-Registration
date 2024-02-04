@@ -39,7 +39,7 @@
     "Id": "Id",
     "birthdate": "Fecha de nacimiento",
     "city": "Ciudad",
-    "clear": "Borrar",
+    "clear-signature": "Borrar Firma",
     "country": "País",
     "firstName": "Nombre",
     "formTitle": "Formulario de inscripción de la OSM",
