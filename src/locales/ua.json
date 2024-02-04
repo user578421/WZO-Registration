@@ -58,7 +58,8 @@
     "emailSubject": "Тема:",
     "emailTo": "До: ",
     "fill-in-form": "Заповніть форму нижче",
-    "remindPdf": "Не забудьте додати PDF як вкладення"
+    "remindPdf": "Не забудьте додати PDF як вкладення",
+    "video": "Відео-інструкція"
   },
   "intructions-title": "Інструкції:",
   "pdf": {

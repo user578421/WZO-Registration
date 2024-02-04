@@ -58,7 +58,8 @@
     "emailSubject": "Asunto:",
     "emailTo": "A: ",
     "fill-in-form": "Complete el siguiente formulario",
-    "remindPdf": "No olvide agregar el PDF como un archivo adjunto"
+    "remindPdf": "No olvide agregar el PDF como un archivo adjunto",
+    "video": "Video de instrucciones"
   },
   "intructions-title": "Instrucciones:",
   "pdf": {

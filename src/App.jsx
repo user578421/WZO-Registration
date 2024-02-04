@@ -24,6 +24,7 @@ import {a} from './Arimo-bold.js';
 import 'react-toastify/dist/ReactToastify.css';
 import {LanguageSwitcher} from "./LanguageSwitcher.jsx";
 import {PreviewAndSendStep} from "./PreviewAndSendStep.jsx";
+import videoUrl from './iphone guide.mp4'
 
 function App() {
     const {t, i18n} = useTranslation();
@@ -79,6 +80,11 @@ function App() {
                     <li>{t('instruction.download-pdf')}</li>
                     <li>{t("instruction.click")}</li>
                 </ul>
+                {/*style*/}
+                <div className={"text-center text-blue-500"}>
+                    <a href={videoUrl} target="_blank">
+                        {t("instruction.video")}</a>
+                </div>
             </div>
             <div className="mx-auto max-w-full px-6 py-6 bg-white border-0 shadow-lg rounded-3xl">
                 <h1 className="text-2xl font-bold mb-8 text-center">{t("input.formTitle")}</h1>
