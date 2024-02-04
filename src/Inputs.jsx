@@ -160,4 +160,5 @@ export const SignatureInput = ({label, name}) => {
 
 
 export const Title = ({children}) => (<h1 className="text-2xl font-bold mb-2 mt-2 w-1/10">{children}</h1>);
-export const SubTitle = ({children}) => (<h2 className="text-1xl font-bold mb-2 mt-2 w-1/10">{children}</h2>);
+export const SubTitle = ({children}) => (
+    <h2 className="text-1xl font-bold mb-2 mt-2 w-1/10 break-words">{children}</h2>);

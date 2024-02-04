@@ -8,7 +8,7 @@ import {useAtom} from "jotai";
 
 export const PreviewAndSendStep = () => {
     const templateRef = useRef();
-    const [, setIsProcessingAtom] = useAtom(isProcessingAtom);
+    const [isProcessing, setIsProcessingAtom] = useAtom(isProcessingAtom);
     const [name] = useAtom(nameAtom);
     const [family] = useAtom(familyNameAtom);
     const {t, i18n} = useTranslation();
