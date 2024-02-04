@@ -80,29 +80,31 @@ export const DropdownInput = ({label, name, options, atom}) => {
                 console.log('update', e.target.value, name);
                 return setValue(e.target.value);
             }}
-            className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+            className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
         >
             <option value=""></option>
             {options.map((option, index) => (
-                <option key={index} value={option.value}>{option.label}</option>))}
+                <option key={index} value={option.value}>{option.label}</option>
+            ))}
         </select>
         <label htmlFor={name} className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">{label}</label>
         <span className="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
     </div>);
 };
 
-export const Button = ({children, disabled, ...rest}) => {
-    return (<button
+export const Button = ({children, disabled, moreClassNames, ...rest}) => {
+    return <button
         id="button"
         type="button"
         className={`w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-pink-500 hover:bg-pink-600 hover:shadow-lg focus:outline-none
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'}
+            ${moreClassNames}
         `}
         disabled={disabled}
         {...rest}
     >
         {children}
-    </button>);
+    </button>;
 };
 
 export const SignatureInput = ({label, name}) => {
@@ -144,7 +146,7 @@ export const SignatureInput = ({label, name}) => {
 
     const {t} = useTranslation();
     return (<div className="relative z-0 w-full flex flex-col items-center pt-5">
-        <div>
+        <div className={"cursor-pointer"}>
             <canvas
                 ref={canvasRef}
                 width="300" height="100"
@@ -152,7 +154,9 @@ export const SignatureInput = ({label, name}) => {
             />
         </div>
         <div className="flex space-x-4 mt-2">
-            <Button onClick={clear}>{t("input.clear-signature")}</Button>
+            <Button onClick={clear} moreClassNames={"text-pink-500 bg-pink-50 hover:bg-pink-100 text-base"}>
+                {t("input.clear-signature")}
+            </Button>
         </div>
         <div className={'text-start w-full'}>
             {/* The purpose of the input is in order to make the label render with transform to make it smaller */}
@@ -164,6 +168,7 @@ export const SignatureInput = ({label, name}) => {
 };
 
 
-export const Title = ({children}) => (<h1 className="text-2xl font-bold mb-2 mt-2 w-1/10">{children}</h1>);
-export const SubTitle = ({children}) => (
-    <h2 className="text-1xl font-bold mb-2 mt-2 w-1/10 break-words">{children}</h2>);
+export const Title = ({children}) => <h1 className="text-2xl font-bold mb-2 mt-2 w-1/10">{children}</h1>;
+export const SubTitle = ({children}) => <h2 className="text-1xl font-bold mb-2 mt-2 w-1/10 break-words">
+    {children}
+</h2>;
