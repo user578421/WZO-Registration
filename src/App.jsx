@@ -68,7 +68,7 @@ function App() {
 
     return (
         <div
-            className="min-h-screen bg-gray-100 p-4 flex justify-center flex-col items-center"
+            className="min-h-screen bg-gray-100 p-4 flex justify-center flex-col items-center pb-8"
             dir={i18n.dir()}
         >
             <LanguageSwitcher/>
