@@ -1,6 +1,8 @@
 ﻿{
   "button": {
-    "download-pdf": "Descargar PDF"
+    "back": "Atrás",
+    "download-pdf": "Descargar PDF",
+    "next": "Siguiente"
   },
   "country": {
     "Argentina": "Argentina",
@@ -29,6 +31,9 @@
     "body": "Por favor, encuentre adjunto el formulario de inscripción de la OSM",
     "send-button": "Enviar correo electrónico a la oficina de la OSM",
     "subject": "Formulario de inscripción de la OSM -"
+  },
+  "error": {
+    "missingFields": "Los siguientes campos son obligatorios: {{missingFields}}"
   },
   "input": {
     "Id": "Id",

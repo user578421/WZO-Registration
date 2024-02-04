@@ -1,5 +1,4 @@
 ﻿import {atom, useAtomValue} from "jotai";
-import i18n from "i18next";
 
 export const nameAtom = atom('');
 
@@ -13,6 +12,9 @@ export const birthdateAtom = atom('');
 export const isProcessingAtom = atom(false);
 export const signaturePadAtom = atom(null);
 export const signatureAtom = atom(null);
+
+export const wizardStepAtom = atom(0);
+
 export const reverseNonHebrew = (str) => {
     const rtlLangCharsRegex = /[\u0590-\u05FF\u0621-\u064A]/;
     if (!rtlLangCharsRegex.test(str)) {
@@ -44,22 +46,3 @@ export const countryAtomReversed = atom(get => atomForRenderingAtom(get, country
 export const cityAtomReversed = atom(get => atomForRenderingAtom(get, cityAtom));
 export const streetAtomReversed = atom(get => atomForRenderingAtom(get, streetAtom));
 export const birthdateAtomReversed = atom(get => atomForRenderingAtom(get, birthdateAtom));
-
-export const isFormFilledAtom = atom(get => {
-    const name = get(nameAtom);
-    const familyName = get(familyNameAtom);
-    // const email = get(emailAtom);
-    let id = get(idAtom);
-    const country = get(countryAtom);
-    const city = get(cityAtom);
-    const street = get(streetAtom);
-    const birthdate = get(birthdateAtom);
-    const signature = get(signatureAtom);
-    //if language is russian, we don't need to check the id
-    const requireId = !["Russia","France"].includes(country);
-    if (!requireId) {
-        id = true;
-    }
-    console.log({name, familyName, id, country, city, street, birthdate})
-    return !!(name && familyName && id && country && city && street && birthdate && signature);
-});

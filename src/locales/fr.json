@@ -1,6 +1,8 @@
 ﻿{
   "button": {
-    "download-pdf": "Télécharger le PDF"
+    "back": "Retour",
+    "download-pdf": "Télécharger le PDF",
+    "next": "Suivant"
   },
   "country": {
     "Argentina": "Argentine",
@@ -29,6 +31,9 @@
     "body": "Veuillez trouver ci-joint le formulaire d'inscription WZO",
     "send-button": "Composer un e-mail au bureau WZO",
     "subject": "Formulaire d'inscription WZO -"
+  },
+  "error": {
+    "missingFields": "Les champs suivants sont obligatoires: {{missingFields}}"
   },
   "input": {
     "Id": "Id",

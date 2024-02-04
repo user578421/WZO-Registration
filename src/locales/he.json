@@ -1,6 +1,8 @@
 ﻿{
   "button": {
-    "download-pdf": "הורדת קובץ PDF"
+    "back": "חזור",
+    "download-pdf": "הורדת קובץ PDF",
+    "next": "הבא"
   },
   "country": {
     "Argentina": "ארגנטינה",
@@ -29,6 +31,9 @@
     "body": "נא להוריד את טופס ההרשמה מצורף",
     "send-button": "שליחת דואר אלקטרוני למשרד ה-WZO",
     "subject": "טופס הרשמה ל-WZO -"
+  },
+  "error": {
+    "missingFields": "שדות הבאים הינם חובה {{missingFields}}"
   },
   "input": {
     "Id": "תעודת זהות",

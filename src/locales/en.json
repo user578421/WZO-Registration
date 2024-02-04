@@ -1,6 +1,8 @@
 ﻿{
   "button": {
-    "download-pdf": "Download PDF"
+    "back": "Back",
+    "download-pdf": "Download PDF",
+    "next": "Next"
   },
   "country": {
     "Argentina": "Argentina",
@@ -29,6 +31,9 @@
     "body": "Please find attached the WZO Registration Form",
     "send-button": "Compose Email to WZO Office",
     "subject": "WZO Registration Form -"
+  },
+  "error": {
+    "missingFields": "The following fields are required {{missingFields}}"
   },
   "input": {
     "Id": "Id",
