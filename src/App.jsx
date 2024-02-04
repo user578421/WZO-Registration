@@ -1,10 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef} from 'react';
 
 import {InputForm} from "./InputForm.jsx";
 import PdfTemplate from "./PdfTemplate.jsx";
 import {Button, SubTitle} from "./Inputs.jsx";
 import jsPDF from "jspdf";
-import {a} from './Arimo-bold.js';
 import {useAtom} from "jotai";
 import {familyNameAtom, isFormFilledAtom, isProcessingAtom, nameAtom} from "./atoms.js";
 import {ToastContainer} from "react-toastify";
@@ -12,16 +11,7 @@ import {useTranslation} from "react-i18next";
 import './i18n.js';
 
 import 'react-toastify/dist/ReactToastify.css';
-import {useOnClickOutside} from "./useOnClickOutside.jsx";
-
-const locales = {
-    en: "English",
-    fr: "Français",
-    ru: "русский",
-    ua: "український",
-    he: "עברית",
-    es: "Español",
-};
+import {LanguageSwitcher} from "./LanguageSwitcher.jsx";
 
 function App() {
     const templateRef = useRef();
@@ -30,121 +20,15 @@ function App() {
     const [name] = useAtom(nameAtom);
     const [family] = useAtom(familyNameAtom);
     const {t, i18n} = useTranslation();
-    const languageDropdownRef = useRef();
-    const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
-    useOnClickOutside(languageDropdownRef, () => {
-        setLangDropdownOpen(false);
-    }, []);
 
-    useEffect(() => {
-        //if language is not in the list of supported languages, default to english
-        if (!Object.keys(locales).includes(i18n.language)) {
-            i18n.changeLanguage("en");
-        }
-    }, [i18n.language]);
 
-    const flagIcon = (lang) => {
-        return <span className="inline-flex items-center justify-center">
-                    <img
-                        src={`https://flagcdn.com/16x12/${lang === "en" ? "us" : lang === "he" ? "il" : lang}.png`}
-                        alt={locales[lang]}
-                    />
-                </span>;
-    };
     return (
         <div
             className="min-h-screen bg-gray-100 p-0 sm:p-12 flex justify-center flex-col items-center"
             dir={i18n.dir()}
         >
-            <div className={`flex absolute left-1/2 transform -translate-x-1/2 top-1.5`}>
-                <div ref={languageDropdownRef} className={`relative inline-block text-start`}>
-                    <div>
-                        <button
-                            type="button"
-                            className={`inline-flex flex-row gap-2 justify-center w-full rounded-md 
-                                border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium 
-                                text-gray-700 
-                                hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-50
-                                items-center
-                                `}
-                            id="options-menu"
-                            aria-haspopup="true"
-                            aria-expanded="true"
-                            onClick={() => setLangDropdownOpen(!langDropdownOpen)}>
-                            {/*Flag based on language*/}
-                            {flagIcon(i18n.language)}
-                            {locales[i18n.language]}
-                        </button>
-                    </div>
-                    {/* Dropdown menu, show/hide based on menu state. */}
-                    {langDropdownOpen && (
-                        <div
-                            className={`origin-top-right absolute mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 start-0`}
-                        >
-                            <div
-                                className="py-1"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-labelledby="options-menu"
-                            >
-                                <a href="#" onClick={() => {
-                                    i18n.changeLanguage("en");
-                                    setLangDropdownOpen(false);
-                                }}
-                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                   role="menuitem"
-                                >
-                                    {flagIcon("en")}&nbsp;&nbsp;English
-                                </a>
-                                <a href="#" onClick={() => {
-                                    i18n.changeLanguage("fr");
-                                    setLangDropdownOpen(false);
-                                }}
-                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                   role="menuitem"
-                                >
-                                    {flagIcon("fr")}&nbsp;&nbsp;Français
-                                </a>
-                                <a href="#" onClick={() => {
-                                    i18n.changeLanguage("ru");
-                                    setLangDropdownOpen(false);
-                                }}
-                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                   role="menuitem"
-                                >
-                                    {flagIcon("ru")}&nbsp;&nbsp;русский</a>
-                                <a href="#" onClick={() => {
-                                    i18n.changeLanguage("ua");
-                                    setLangDropdownOpen(false);
-                                }}
-                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                   role="menuitem"
-                                >
-                                    {flagIcon("ua")}&nbsp;&nbsp;український</a>
-                                <a href="#" onClick={() => {
-                                    i18n.changeLanguage("he");
-                                    setLangDropdownOpen(false);
-                                }}
-                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                   role="menuitem"
-                                >
-                                    {flagIcon("he")}&nbsp;&nbsp;עברית
-                                </a>
-                                <a href="#" onClick={() => {
-                                    i18n.changeLanguage("es");
-                                    setLangDropdownOpen(false);
-                                }}
-                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                   role="menuitem"
-                                >
-                                    {flagIcon("es")}&nbsp;&nbsp;Español
-                                </a>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </div>
+            <LanguageSwitcher/>
             <div className={"mb-5"}>
                 {t("intructions-title")}
                 <ul className={"list-disc list-inside"}>
