@@ -1,6 +1,8 @@
 ﻿{
   "button": {
-    "download-pdf": "Завантажити PDF"
+    "back": "Назад",
+    "download-pdf": "Завантажити PDF",
+    "next": "Далі"
   },
   "country": {
     "Argentina": "Аргентина",
@@ -29,6 +31,9 @@
     "body": "Додаток до листа: Форма реєстрації WZO",
     "send-button": "Написати лист до офісу WZO",
     "subject": "Форма реєстрації WZO -"
+  },
+  "error": {
+    "missingFields": "Всі поля повинні бути заповнені"
   },
   "input": {
     "Id": "Id",

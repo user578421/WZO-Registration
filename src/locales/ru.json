@@ -1,6 +1,8 @@
 ﻿{
   "button": {
-    "download-pdf": "Скачать PDF"
+    "back": "Назад",
+    "download-pdf": "Скачать PDF",
+    "next": "Далее"
   },
   "country": {
     "Argentina": "Аргентина",
@@ -29,6 +31,9 @@
     "body": "Пожалуйста, прикрепите заполненную форму регистрации WZO",
     "send-button": "Отправить письмо в офис WZO",
     "subject": "Форма регистрации WZO -"
+  },
+  "error": {
+    "missingFields": "Пожалуйста, заполните все поля"
   },
   "input": {
     "Id": "Id",

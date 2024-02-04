@@ -110,12 +110,16 @@ export const SignatureInput = ({label, name}) => {
 
     const canvasRef = useRef(null);
     useEffect(() => {
-        const canvas = canvasRef.current
-        ;
+        const canvas = canvasRef.current;
+        //set canvas value based on atom
+        if (value) {
+            const img = new Image();
+            img.src = value;
+            img.onload = () => {
+                canvas.getContext('2d').drawImage(img, 0, 0);
+            };
+        }
         const signaturePad = new SignaturePad(canvas, {
-            onEnd: () => {
-                console.log('update sig');
-            },
             backgroundColor: 'white',
             penColor: 'black',
             minWidth: 1,
@@ -140,7 +144,11 @@ export const SignatureInput = ({label, name}) => {
     const {t} = useTranslation();
     return (<div className="relative z-0 w-full mb-5 flex flex-col items-center">
         <div>
-            <canvas ref={canvasRef} width="300" height="100" className="border-2 border-gray-300"/>
+            <canvas
+                ref={canvasRef}
+                width="300" height="100"
+                className="border-2 border-gray-300"
+            />
         </div>
         <div className="flex space-x-4">
             <Button onClick={clear}>{t("input.clear")}</Button>
