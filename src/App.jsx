@@ -17,7 +17,10 @@ import {
 import {toast, ToastContainer} from "react-toastify";
 import {useTranslation} from "react-i18next";
 import './i18n.js';
-
+import {y} from './david1.js'
+import {x} from './david2.js'
+import {z} from './Arimo-normal.js'
+import {a} from './Arimo-bold.js'
 import 'react-toastify/dist/ReactToastify.css';
 import {LanguageSwitcher} from "./LanguageSwitcher.jsx";
 import {PreviewAndSendStep} from "./PreviewAndSendStep.jsx";
@@ -33,7 +36,7 @@ function App() {
     const [street] = useAtom(streetAtom);
     const [birthdate] = useAtom(birthdateAtom);
     const [signature] = useAtom(signatureAtom);
-
+    const fakeUseFonts = [y, x, z, a];
     const missingFields = useMemo(() => {
 
         //if language is russian, we don't need to check the id
