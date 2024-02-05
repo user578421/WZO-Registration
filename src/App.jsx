@@ -88,7 +88,8 @@ function App() {
             </div>
             <div className="mx-auto max-w-full px-6 py-6 bg-white border-0 shadow-lg rounded-3xl">
                 <h1 className="text-2xl font-bold mb-8 text-center">{t("input.formTitle")}</h1>
-                {wizardStep === 0 ? <InputStep/> : <PreviewAndSendStep/>}
+                <InputStep isActive={wizardStep === 0}/>
+                <PreviewAndSendStep isActive={wizardStep === 1}/>
                 <div className="w-full flex justify-center">
                     <div className="w-60 my-3">
                         <Button onClick={toggleStepHandler}>

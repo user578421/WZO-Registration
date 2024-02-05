@@ -38,7 +38,7 @@ export const countryOptions = [
     {value: "Spain", label: "Spain"},
 ];
 
-export const InputStep = () => {
+export const InputStep = ({isActive}) => {
     const {t, i18n} = useTranslation();
     const [country] = useAtom(countryAtom);
 
@@ -48,23 +48,23 @@ export const InputStep = () => {
     })), [i18n.language]);
     const requireId = !["Russia", "France"].includes(country);
 
-    return (<div>
-            <form id="form" noValidate>
-                <TextInput label={t("input.firstName")} name="name" atom={nameAtom}/>
-                <TextInput label={t("input.lastName")} name="familyName" atom={familyNameAtom}/>
-                {/*<TextInput label="Email" name="email" type="email" atom={emailAtom}/>*/}
-                {requireId ? <TextInput label={t("input.Id")} name="id" type="text" atom={idAtom}/> : null}
-                <DropdownInput
-                    label={t("input.country")}
-                    name="country"
-                    atom={countryAtom}
-                    options={translatedCountryOptions}
-                />
-                <TextInput label={t("input.city")} name="city" type="text" atom={cityAtom}/>
-                <TextInput label={t("input.street")} name="street" type="text" atom={streetAtom}/>
-                <DateInput label={t("input.birthdate")} name="birthdate" atom={birthdateAtom}/>
-                <SignatureInput label={t("input.signature")} name="signature" atom={signatureAtom}/>
-            </form>
+    return (<div className={isActive ? "" : "opacity-0 absolute"}>
+        <form id="form" noValidate>
+            <TextInput label={t("input.firstName")} name="name" atom={nameAtom}/>
+            <TextInput label={t("input.lastName")} name="familyName" atom={familyNameAtom}/>
+            {/*<TextInput label="Email" name="email" type="email" atom={emailAtom}/>*/}
+            {requireId ? <TextInput label={t("input.Id")} name="id" type="text" atom={idAtom}/> : null}
+            <DropdownInput
+                label={t("input.country")}
+                name="country"
+                atom={countryAtom}
+                options={translatedCountryOptions}
+            />
+            <TextInput label={t("input.city")} name="city" type="text" atom={cityAtom}/>
+            <TextInput label={t("input.street")} name="street" type="text" atom={streetAtom}/>
+            <DateInput label={t("input.birthdate")} name="birthdate" atom={birthdateAtom}/>
+            <SignatureInput label={t("input.signature")} name="signature" atom={signatureAtom}/>
+        </form>
 
     </div>);
 };

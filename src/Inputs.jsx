@@ -112,31 +112,37 @@ export const SignatureInput = ({label, name}) => {
     const [signaturePad, setSignaturePad] = useAtom(signaturePadAtom);
 
     const canvasRef = useRef(null);
+    const canvasRefPrev = useRef(null);
     useEffect(() => {
-        const canvas = canvasRef.current;
-        //set canvas value based on atom
-        // if (value) {
-        //     const img = new Image();
-        //     img.src = value;
-        //     img.onload = () => {
-        //         canvas.getContext('2d').drawImage(img, 0, 0);
-        //     };
-        // }
-        const signaturePad = new SignaturePad(canvas, {
-            backgroundColor: 'white',
-            penColor: 'black',
-            minWidth: 1,
-            maxWidth: 1,
-        });
-        setSignaturePad(signaturePad);
+        console.log('useEffect', canvasRef.current, canvasRefPrev.current);
+        if (canvasRef.current !== canvasRefPrev.current) {
+            const canvas = canvasRef.current;
+            //set canvas value based on atom
+            // if (value) {
+            //     const img = new Image();
+            //     img.src = value;
+            //     img.onload = () => {
+            //         canvas.getContext('2d').drawImage(img, 0, 0);
+            //     };
+            // }
+            const signaturePad = new SignaturePad(canvas, {
+                backgroundColor: 'white',
+                penColor: 'black',
+                minWidth: 1,
+                maxWidth: 1,
+            });
+            setSignaturePad(signaturePad);
 
-        const afterStrokeHandler = (e) => {
-            setValue(signaturePad.toDataURL());
-        };
-        signaturePad.addEventListener('endStroke', afterStrokeHandler);
-        return () => {
-            signaturePad.removeEventListener('endStroke', afterStrokeHandler);
-        };
+            const afterStrokeHandler = (e) => {
+                setValue(signaturePad.toDataURL());
+            };
+            signaturePad.addEventListener('endStroke', afterStrokeHandler);
+            return () => {
+                signaturePad.removeEventListener('endStroke', afterStrokeHandler);
+            };
+            canvasRefPrev.current = canvasRef.current;
+        }
+        
     }, [canvasRef.current]);
 
     const clear = () => {
