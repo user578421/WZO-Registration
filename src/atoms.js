@@ -10,6 +10,7 @@ export const cityAtom = atom('');
 export const streetAtom = atom('');
 export const birthdateAtom = atom('');
 export const isProcessingAtom = atom(false);
+export const isProcessingHebrewAtom = atom(false);
 export const signaturePadAtom = atom(null);
 export const signatureAtom = atom(null);
 
@@ -26,13 +27,13 @@ export const reverseNonHebrew = (str) => {
 }
 
 export const useReverseNonHebrew = () => {
-    const isProcessing = useAtomValue(isProcessingAtom);
+    const isProcessing = useAtomValue(isProcessingHebrewAtom);
     if (!isProcessing) return str => str;
     return str => reverseNonHebrew(str);
 }
 
 const atomForRenderingAtom = (get, atom) => {
-    const isProcessing = get(isProcessingAtom);
+    const isProcessing = get(isProcessingHebrewAtom);
     const value = get(atom);
     if (!isProcessing) return value;
     return reverseNonHebrew(value);

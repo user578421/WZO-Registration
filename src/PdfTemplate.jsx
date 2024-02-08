@@ -23,10 +23,12 @@ import {useAtom} from "jotai";
 import {
     birthdateAtomReversed,
     cityAtomReversed,
+    countryAtom,
     countryAtomReversed,
     familyNameAtomReversed,
     idAtomReversed,
     isProcessingAtom,
+    isProcessingHebrewAtom,
     nameAtomReversed,
     reverseNonHebrew,
     signatureAtom,
@@ -42,7 +44,8 @@ const PdfTemplate = ({templateRef,isPdfRenderer}) => {
     const [family] = useAtom(familyNameAtomReversed);
     const [birthdate] = useAtom(birthdateAtomReversed);
     const [id] = useAtom(idAtomReversed);
-    const [country] = useAtom(countryAtomReversed);
+    const [country] = useAtom(countryAtom);
+    const [countryReversed] = useAtom(countryAtomReversed);
     const requireId = !["Russia","France"].includes(country);
     const translatedCountry = t(`country.${country}`);
     const [city] = useAtom(cityAtomReversed);
@@ -93,6 +96,7 @@ const PdfTemplate = ({templateRef,isPdfRenderer}) => {
 
     const placeholder = (value) => value ? <span>{value}</span> : '______________________';
     const [isProcessing] = useAtom(isProcessingAtom)
+    const [isProcessingHebrew] = useAtom(isProcessingHebrewAtom)
     const localDate = (() => {
         //format date as dd/MM/yyyy
         const n = new Date();
@@ -101,9 +105,10 @@ const PdfTemplate = ({templateRef,isPdfRenderer}) => {
         const d = n.getDate();
         return `${d}/${m}/${y}`;
     })();
-    const renderedDate = isProcessing ? reverseNonHebrew(localDate) : localDate;
-    console.log({renderedDate, localDate, isProcessing})
-    const renderedGDPR = isProcessing ? reverseNonHebrew("GDPR") : "GDPR";
+    const shouldReverse = isProcessingHebrew;
+    const renderedDate = shouldReverse ? reverseNonHebrew(localDate) : localDate;
+    console.log({renderedDate, localDate, isProcessing, isProcessingHebrew})
+    const renderedGDPR = shouldReverse ? reverseNonHebrew("GDPR") : "GDPR";
     return (
         <div style={styles.wrapper}>
             <div style={styles.page} ref={templateRef}>

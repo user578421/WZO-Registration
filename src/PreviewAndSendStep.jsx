@@ -9,6 +9,7 @@ import {useAtom} from "jotai";
 export const PreviewAndSendStep = ({isActive}) => {
     const templateRef = useRef();
     const [isProcessing, setIsProcessingAtom] = useAtom(isProcessingAtom);
+    const [isProcessingHebrew, setIsProcessingHebrewAtom] = useAtom(isProcessingAtom);
     const [name] = useAtom(nameAtom);
     const [family] = useAtom(familyNameAtom);
     const {t, i18n} = useTranslation();
@@ -33,6 +34,7 @@ export const PreviewAndSendStep = ({isActive}) => {
                 doc.setFontSize(10);
                 doc.setFont("Arimo", "normal");
                 setIsProcessingAtom(true);
+                setIsProcessingHebrewAtom(i18n.language === "he");
                 if (i18n.language === "he") {
                     doc.setR2L(true);
                 }
@@ -42,6 +44,7 @@ export const PreviewAndSendStep = ({isActive}) => {
                             await doc.save("registration.pdf");
                         },
                     });
+                    setIsProcessingHebrewAtom(false);
                     setIsProcessingAtom(false);
                 }, 1);
             }}
