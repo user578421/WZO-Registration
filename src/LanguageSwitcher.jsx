@@ -8,7 +8,7 @@ export const locales = {
     fr: "Français",
     ru: "русский",
     ua: "український",
-    he: "עברית",
+    // he: "עברית",
     es: "Español",
 };
 export const LanguageSwitcher = () => {
@@ -101,15 +101,15 @@ export const LanguageSwitcher = () => {
                            role="menuitem"
                         >
                             {flagIcon("ua")}&nbsp;&nbsp;український</a>
-                        <a href="#" onClick={() => {
-                            i18n.changeLanguage("he");
-                            setLangDropdownOpen(false);
-                        }}
-                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                           role="menuitem"
-                        >
-                            {flagIcon("he")}&nbsp;&nbsp;עברית
-                        </a>
+                        {/*<a href="#" onClick={() => {*/}
+                        {/*    i18n.changeLanguage("he");*/}
+                        {/*    setLangDropdownOpen(false);*/}
+                        {/*}}*/}
+                        {/*   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"*/}
+                        {/*   role="menuitem"*/}
+                        {/*>*/}
+                        {/*    {flagIcon("he")}&nbsp;&nbsp;עברית*/}
+                        {/*</a>*/}
                         <a href="#" onClick={() => {
                             i18n.changeLanguage("es");
                             setLangDropdownOpen(false);
