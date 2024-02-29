@@ -17,6 +17,7 @@ export const signatureAtom = atom(null);
 export const wizardStepAtom = atom(0);
 
 export const reverseNonHebrew = (str) => {
+    return str;
     const rtlLangCharsRegex = /[\u0590-\u05FF\u0621-\u064A]/;
     if (!rtlLangCharsRegex.test(str)) {
         //reverse each word in place - using the following seperaters: " " and "/"
@@ -33,10 +34,11 @@ export const useReverseNonHebrew = () => {
 }
 
 const atomForRenderingAtom = (get, atom) => {
-    const isProcessing = get(isProcessingHebrewAtom);
+    // const isProcessing = get(isProcessingHebrewAtom);
     const value = get(atom);
-    if (!isProcessing) return value;
-    return reverseNonHebrew(value);
+    return value;
+    // if (!isProcessing) return value;
+    // return reverseNonHebrew(value);
 };
 
 export const nameAtomReversed = atom(get => atomForRenderingAtom(get, nameAtom));

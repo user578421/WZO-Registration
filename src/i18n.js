@@ -5,7 +5,6 @@ import en from "./locales/en.json";
 import fr from "./locales/fr.json";
 import ru from "./locales/ru.json";
 import ua from "./locales/ua.json";
-import he from "./locales/he.json";
 import es from "./locales/es.json";
 
 i18n
@@ -15,6 +14,7 @@ i18n
         // we init with resources
         fallbackLng: "en",
         debug: true,
+        supportedLngs: ["en", "fr", "ru", "ua", /*"he", */"es"],
         resources: {
             en: {
                 translation: en
@@ -27,10 +27,10 @@ i18n
             },
             ua: {
                 translation: ua
-            },
+            },/*
             he: {
                 translation: he
-            },
+            },*/
             es: {
                 translation: es
             }
